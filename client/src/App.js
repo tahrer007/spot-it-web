@@ -1,10 +1,11 @@
 import "./App.css";
 import mapStyles from "./mapStyles"
-import React from "react";
+import React ,{useState} from "react";
+
 import {
   GoogleMap,
   useLoadScript,
-  //Marker,
+  Marker,
   // InfoWindow,
 } from "@react-google-maps/api";
 
@@ -24,10 +25,25 @@ const center = {
 
 const libraries = ["places"];
 function App() {
+
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
+    googleMapsApiKey:  "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
     libraries,
   });
+  const [markers,setMarkers]=useState([]) ;
+  /*const onMapClick = React.useCallback((e) => {
+
+   
+    setMarkers((current) => [
+      ...current,
+      {
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng(),
+        time: new Date(),
+      },
+    ]);
+    console.log(markers);
+  }, []);*/
   if (loadError) return "error loading map";
   if (!isLoaded) return "loading maps.....";
   return (
@@ -37,7 +53,32 @@ function App() {
         zoom={13}
         center={center}
         options ={options}
-      ></GoogleMap>
+        onClick={(event)=>{
+          console.log(event.latLng.lat(),event.latLng.lng())
+          setMarkers((current)=>[
+            ...current,
+            {
+              lat :event.latLng.lat(),
+              lng :event.latLng.lng(),
+            }
+          ])
+        }}
+      >
+{/*{markers.map((marker) => (
+          <Marker
+            position={{ lat: marker.lat, lng: marker.lng }}
+            icon={{
+             // url: `../public/pumba.png`,
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(15, 15),
+              scaledSize: new window.google.maps.Size(30, 30),
+            }}
+          />
+        ))}
+ */}
+
+        
+      </GoogleMap>
     </div>
   );
 }
