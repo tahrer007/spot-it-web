@@ -1,32 +1,42 @@
-
-import './App.css';
-import React from 'react';
+import "./App.css";
+import React from "react";
 import {
   GoogleMap,
- useLoadScript,
+  useLoadScript,
   //Marker,
- // InfoWindow,
+  // InfoWindow,
 } from "@react-google-maps/api";
 
 const mapContainerStyle = {
-  height: "100vh",
-  width: "100vw",
+  height: "50vh",
+  width: "50vw",
 };
 const options = {
   disableDefaultUI: true,
   zoomControl: true,
 };
 const center = {
-  lat: 43.6532,
-  lng: -79.3832,
+  lat: 32.794044,
+  lng: 34.989571,
 };
+
+const libraries = ["places"];
 function App() {
-  return <div>
-
-    <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center}>
-
-    </GoogleMap>
-  </div>
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
+    libraries,
+  });
+  if (loadError) return "error loading map";
+  if (!isLoaded) return "loading maps.....";
+  return (
+    <div>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={13}
+        center={center}
+      ></GoogleMap>
+    </div>
+  );
 }
 
 export default App;
