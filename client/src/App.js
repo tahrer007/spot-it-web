@@ -1,7 +1,8 @@
 import "./App.css";
+
 import mapStyles from "./mapStyles";
 import "@reach/combobox/styles.css";
-import React, { useState ,useCallback ,useRef } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { formatRelative } from "date-fns";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -19,7 +20,7 @@ import {
   GoogleMap,
   useLoadScript,
   Marker,
-   InfoWindow,
+  InfoWindow,
 } from "@react-google-maps/api";
 
 const mapContainerStyle = {
@@ -30,7 +31,7 @@ const options = {
   styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
-  clickableIcons: false
+  clickableIcons: false,
 };
 const center = {
   lat: 32.794044,
@@ -60,11 +61,12 @@ function App() {
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
-  
+
   if (loadError) return "error loading map";
   if (!isLoaded) return "loading maps.....";
   return (
     <div>
+      <Search />
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={13}
@@ -88,7 +90,7 @@ function App() {
             }}
           />
         ))}
-         {selected ? (
+        {selected ? (
           <InfoWindow
             position={{ lat: selected.lat, lng: selected.lng }}
             onCloseClick={() => {
@@ -110,8 +112,38 @@ function App() {
     </div>
   );
 }
-function Search (){
-  
+function Search() {
+  const {
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+    clearSuggestions,
+  } = usePlacesAutocomplete({
+    requestOptions: {
+      location: { lat: () => 32.794044, lng: () => 34.989571 },
+      radius: 100 * 1000,
+    },
+  });
+
+  return (
+    <div className="searchBar">
+      <Combobox
+        onSelect={(address) => {
+          console.log(address);
+        }}
+      >
+        <ComboboxInput
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+          disabled={!ready}
+          placeholder="Enter an address"
+        />
+      </Combobox>
+    </div>
+  );
 }
 
 export default App;
