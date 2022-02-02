@@ -1,4 +1,5 @@
 import "./App.css";
+import mapStyles from "./mapStyles"
 import React from "react";
 import {
   GoogleMap,
@@ -12,6 +13,7 @@ const mapContainerStyle = {
   width: "50vw",
 };
 const options = {
+  styles : mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
 };
@@ -34,6 +36,7 @@ function App() {
         mapContainerStyle={mapContainerStyle}
         zoom={13}
         center={center}
+        options ={options}
       ></GoogleMap>
     </div>
   );
