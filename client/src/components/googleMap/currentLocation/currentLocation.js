@@ -10,7 +10,7 @@ export default function Locate({ panTo }) {
           lng: position.coords.longitude,
         });
       },
-      () => null
+      (error) => (console.log(error.message))
     );
   };
 
