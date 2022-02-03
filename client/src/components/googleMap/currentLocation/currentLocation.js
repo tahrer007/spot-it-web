@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Locate({ panTo }) {
   const getCurrentLocation = () => {
+      
     navigator.geolocation.getCurrentPosition(
       (position) => {
         console.log(position);
