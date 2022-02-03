@@ -1,5 +1,6 @@
-import React from "react";
-import Search from "./search/search"
+import React ,{useState ,useCallback,useRef} from "react";
+import Search from "./search/search";
+import Locate from "./currentLocation/currentLocation";
 import mapStyles from "./mapStyles";
 import "../../App.css";
 import {
@@ -9,9 +10,6 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import { formatRelative } from "date-fns";
-
-import "@reach/combobox/styles.css";
-
 const libraries = ["places"];
 const mapContainerStyle = {
   height: "80vh",
@@ -32,10 +30,10 @@ export default function Map() {
     googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
     libraries,
   });
-  const [markers, setMarkers] = React.useState([]);
-  const [selected, setSelected] = React.useState(null);
+  const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState(null);
 
-  const onMapClick = React.useCallback((e) => {
+  const onMapClick = useCallback((e) => {
     setMarkers((current) => [
       ...current,
       {
@@ -46,12 +44,12 @@ export default function Map() {
     ]);
   }, []);
 
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
 
-  const panTo = React.useCallback(({ lat, lng }) => {
+  const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(14);
   }, []);
@@ -109,28 +107,6 @@ export default function Map() {
         ) : null}
       </GoogleMap>
     </div>
-  );
-}
-
-function Locate({ panTo }) {
-  return (
-    <button
-      className="locate"
-      onClick={() => {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            console.log(position);
-            panTo({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            });
-          },
-          () => null
-        );
-      }}
-    >
-      current location
-    </button>
   );
 }
 
