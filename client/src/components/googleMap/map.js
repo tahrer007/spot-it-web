@@ -39,8 +39,6 @@ export default function Map() {
   const [selected, setSelected] = useState(null);
 
   const onMapClick = useCallback((e) => {
-    console.log(e);
-
     setMarkers((current) => [
       ...current,
       {
@@ -117,6 +115,8 @@ export default function Map() {
                 Alert
               </h2>
               <p>Spotted {formatRelative(selected.time, new Date())}</p>
+              {console.log(typeof(selected.time),selected.time)}
+              
             </div>
           </InfoWindow>
         ) : null}

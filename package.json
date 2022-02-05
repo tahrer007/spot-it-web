@@ -1,8 +1,27 @@
 {
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tahrer007/final-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tahrer007/final-project/issues"
+  },
+  "homepage": "https://github.com/tahrer007/final-project#readme",
   "dependencies": {
-    "dotenv": "^15.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
-    "install": "^0.13.0"
+    "mongoose": "^6.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

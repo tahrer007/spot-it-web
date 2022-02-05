@@ -1,0 +1,39 @@
+const Locations = require("../dataBase/models/locations.js");
+const { loadAllLocations } = require("../utils/locationsUtiles");
+
+const getAllLocations = async (req, res) => {
+  try {
+    const allLocations = await loadAllLocations();
+    res.status(200).json(allLocations);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const addNewLocation = async (req, res) => {
+  const location = new Locations({
+    location: req.body.location,
+    time: req.body.time,
+    comment: req.body.comment,
+    number: req.body.number,
+  });
+
+  try {
+    //const userExist = await isUserExist(user.id);
+    /*if (userExist) {
+      throw new Error("user already exist");
+    } else {
+      const newUser = await user.save();
+      res.status(201).json(newUser);
+    }*/
+    const addLocation = await location.save();
+    res.status(201).json(addLocation);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
+module.exports = {
+  getAllLocations,
+  addNewLocation,
+};
