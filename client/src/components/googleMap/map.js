@@ -1,13 +1,15 @@
-import React ,{useState ,useCallback,useRef} from "react";
+import React, { useState, useCallback, useRef } from "react";
 import Search from "./search/search";
 import Locate from "./currentLocation/currentLocation";
 import mapStyles from "./mapStyles";
+import isInsideHaifa from "./scripts/insideHaifa"
 import "../../App.css";
 import {
   GoogleMap,
   useLoadScript,
   Marker,
   InfoWindow,
+  Polygon,
 } from "@react-google-maps/api";
 import { formatRelative } from "date-fns";
 const libraries = ["places"];
@@ -25,7 +27,21 @@ const center = {
   lng: 34.9885,
 };
 
+const HaifaCoords = [
+  { lat: 32.76481371320269, lng: 35.053538224742795 },
+  { lat: 32.76481371320269, lng: 35.053538224742795 },
+  { lat: 32.79223596895451, lng: 35.03225221400061 },
+  { lat: 32.81500584962064, lng: 35.011853646062825 },
+  { lat: 32.83581988425926, lng: 34.98521699671545 },
+  { lat: 32.82760077631477, lng: 34.95929612879553 },
+  { lat: 32.81707269595755, lng: 34.95534791712561 },
+  { lat: 32.758193042017524, lng: 34.95225801234045 },
+  { lat: 32.76129430977934, lng: 34.994544982910156 },
+];
+
 export default function Map() {
+
+  isInsideHaifa() ; 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
     libraries,
@@ -34,6 +50,8 @@ export default function Map() {
   const [selected, setSelected] = useState(null);
 
   const onMapClick = useCallback((e) => {
+    console.log(e);
+
     setMarkers((current) => [
       ...current,
       {
@@ -68,9 +86,17 @@ export default function Map() {
         zoom={13}
         center={center}
         options={options}
-        onClick={onMapClick}
         onLoad={onMapLoad}
       >
+        <Polygon
+          onClick={onMapClick}
+          paths={HaifaCoords}
+          strokeColor="#0000FF"
+          strokeOpacity={0.8}
+          strokeWeight={2}
+          fillColor="#0000FF"
+          fillOpacity={0.35}
+        />
         {markers.map((marker) => (
           <Marker
             key={`${marker.lat}-${marker.lng}`}
@@ -109,4 +135,3 @@ export default function Map() {
     </div>
   );
 }
-

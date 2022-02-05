@@ -11,6 +11,7 @@
     "axios": "^0.25.0",
     "date-fns": "^2.28.0",
     "dotenv": "^15.0.0",
+    "node-geometry-library": "^1.2.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",

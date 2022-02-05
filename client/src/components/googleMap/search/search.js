@@ -62,7 +62,6 @@ export default function Search({ panTo }) {
                   value={description}
                 />
               ))}
-            {console.log(data)}
           </ComboboxList>
         </ComboboxPopover>
       </Combobox>
