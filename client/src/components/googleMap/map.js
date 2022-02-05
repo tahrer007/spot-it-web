@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useRef } from "react";
+
 import Search from "./search/search";
 import Locate from "./currentLocation/currentLocation";
 import mapStyles from "./mapStyles";
-import isInsideHaifa from "./scripts/insideHaifa" ;
-import HaifaCoords from "./scripts/haifaCoords"
+import isInsideHaifa from "./scripts/insideHaifa";
+import HaifaCoords from "./scripts/haifaCoords";
 import "../../App.css";
 import {
   GoogleMap,
@@ -28,11 +29,8 @@ const center = {
   lng: 34.9885,
 };
 
-
-
 export default function Map() {
-
-  isInsideHaifa(center) ; 
+  isInsideHaifa(center);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
     libraries,
