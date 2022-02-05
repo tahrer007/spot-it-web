@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server/server.js"
+    "dev": "nodemon server/server.js",
+    "client":"cd client && cd src && npm start",
+    "start": "concurrently \"npm run dev\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,7 @@
   },
   "homepage": "https://github.com/tahrer007/final-project#readme",
   "dependencies": {
+    "concurrently": "^7.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",

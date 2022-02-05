@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useRef } from "react";
-
+import React, { useState, useCallback, useRef, useEffect } from "react";
+import myApi from "../../api/api";
 import Search from "./search/search";
 import Locate from "./currentLocation/currentLocation";
 import mapStyles from "./mapStyles";
@@ -30,6 +30,17 @@ const center = {
 };
 
 export default function Map() {
+  useEffect(() => {
+    const getALLlocations = async () => {
+      try {
+        const { data } = await myApi.get("locations/getAllLocations");
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getALLlocations();
+  }, []);
   isInsideHaifa(center);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
@@ -115,8 +126,7 @@ export default function Map() {
                 Alert
               </h2>
               <p>Spotted {formatRelative(selected.time, new Date())}</p>
-              {console.log(typeof(selected.time),selected.time)}
-              
+              {console.log(typeof selected.time, selected.time)}
             </div>
           </InfoWindow>
         ) : null}
