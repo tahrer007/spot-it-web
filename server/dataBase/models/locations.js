@@ -2,9 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const locationsSchema = new Schema({
-  location: {
-    type: Object,
-    required: [true, "Please provide a location"],
+  lat: {
+    type: Number  ,
+    required: [true, "Please provide a lat"],
+  },
+  lng: {
+    type: Number,
+    required: [true, "Please provide a lng"],
   },
   time: {
     type: Object,
@@ -16,7 +20,7 @@ const locationsSchema = new Schema({
     default: "user didn't add comment",
   },
   number :{
-    type: Number,
+    type: String,
     required: [true,"Please provide a number"],
     
   }

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const {getAllLocations ,addNewLocation} = require("../controllers/locationsControllers");
+const {getLocations ,addLocation} = require("../controllers/locationsControllers");
 
-router.get('/getAllLocations', getAllLocations) ;
-router.post('/addNewLocation', addNewLocation) ;
+router.get('/getLocations', getLocations) ;
+router.post('/addLocation', addLocation) ;
 module.exports = router;

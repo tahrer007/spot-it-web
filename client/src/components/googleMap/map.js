@@ -28,9 +28,20 @@ const center = {
   lat: 32.81841,
   lng: 34.9885,
 };
+//const GOOGLEAPIKEY = process.env.GOOGLE_MAPS_KEY_API  ;
 
 export default function Map() {
-  useEffect(() => {
+  const addLocation = async (newLocation) => {
+    console.log(newLocation)
+     myApi.post('/locations/addLocation', newLocation)
+    .then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
+  };
+
+  /*useEffect(() => {
     const getALLlocations = async () => {
       try {
         const { data } = await myApi.get("locations/getAllLocations");
@@ -40,7 +51,7 @@ export default function Map() {
       }
     };
     getALLlocations();
-  }, []);
+  }, []);*/
   isInsideHaifa(center);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
@@ -50,14 +61,25 @@ export default function Map() {
   const [selected, setSelected] = useState(null);
 
   const onMapClick = useCallback((e) => {
-    setMarkers((current) => [
-      ...current,
-      {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
+    const lat = e.latLng.lat();
+    const lng = e.latLng.lng();
+    if (!isInsideHaifa({ lat, lng })) {
+      console.log("outside the boundries");
+    } else {
+      const newLocation ={
+        lat: lat,
+        lng: lng,
         time: new Date(),
-      },
-    ]);
+        comment : "TEST from client !!",
+        number : "more than 1000"
+      }
+      setMarkers((current) => [
+        ...current,
+        newLocation,
+      ]);
+      addLocation(newLocation) ;
+
+    }
   }, []);
 
   const mapRef = useRef();
@@ -85,6 +107,7 @@ export default function Map() {
         center={center}
         options={options}
         onLoad={onMapLoad}
+        onClick={onMapClick}
       >
         <Polygon
           onClick={onMapClick}
@@ -95,6 +118,7 @@ export default function Map() {
           fillColor="#0000FF"
           fillOpacity={0.35}
         />
+
         {markers.map((marker) => (
           <Marker
             key={`${marker.lat}-${marker.lng}`}

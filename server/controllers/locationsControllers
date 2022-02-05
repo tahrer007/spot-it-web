@@ -1,7 +1,7 @@
 const Location = require("../dataBase/models/locations.js");
 const { loadAllLocations } = require("../utils/locationsUtiles");
 
-const getAllLocations = async (req, res) => {
+const getLocations = async (req, res) => {
   try {
     const allLocations = await loadAllLocations();
     res.status(200).json(allLocations);
@@ -10,15 +10,18 @@ const getAllLocations = async (req, res) => {
   }
 };
 
-const addNewLocation = async (req, res) => {
+const addLocation = async (req, res) => {
+  
   const newLocation = new Location({
-    location: req.body.location,
+    lat: req.body.lat,
+    lng: req.body.lng,
     time: req.body.time,
     comment: req.body.comment,
     number: req.body.number,
   });
 
   try {
+    console.log("new location ")
     //const userExist = await isUserExist(user.id);
     /*if (userExist) {
       throw new Error("user already exist");
@@ -34,6 +37,6 @@ const addNewLocation = async (req, res) => {
 };
 
 module.exports = {
-  getAllLocations,
-  addNewLocation,
+  getLocations,
+  addLocation,
 };
