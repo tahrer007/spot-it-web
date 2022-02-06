@@ -1,18 +1,20 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Map from "./components/googleMap/map";
+
+import Home from "./components/home/home";
+import Help from "./components/help/help";
+import About from "./components/about/about";
 
 export default function App() {
   return (
     <div>
-      <h1>
-        Pumbaa{" "}
-        <span role="img" aria-label="tent">
-          🐗
-        </span>
-      </h1>
-
-      <Map />
+      <Routes>
+        <Route path="/home" exact component={Home} />
+        <Route path="/about" exact component={About} />
+        <Route path="/help" exact component={Help} />
+        {/*<Route component={NoMatch} /> */}
+      </Routes>
     </div>
   );
 }
