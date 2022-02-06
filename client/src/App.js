@@ -1,20 +1,24 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 
 import Home from "./components/home/home";
 import Help from "./components/help/help";
 import About from "./components/about/about";
+import ErrorPage from "./components/errorPage/errorPage";
 
-export default function App() {
+function App() {
   return (
     <div>
-      <Routes>
-        <Route path="/home" exact component={Home} />
-        <Route path="/about" exact component={About} />
-        <Route path="/help" exact component={Help} />
-        {/*<Route component={NoMatch} /> */}
-      </Routes>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/Help" element={<Help />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
+export default App;

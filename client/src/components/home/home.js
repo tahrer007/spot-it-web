@@ -1,7 +1,7 @@
 import React from "react";
 import Map from "../googleMap/map";
 
-export default function home() {
+ function Home() {
   return (
     <div>
       <h1>
@@ -15,3 +15,4 @@ export default function home() {
     </div>
   );
 }
+export default Home ;
