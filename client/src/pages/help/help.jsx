@@ -1,8 +1,10 @@
 import React from "react";
+import "../../App.css"
+
 
 export default function help() {
   return (
-    <div>
+    <div className="pagesContainer">
           help   
     </div>
   );

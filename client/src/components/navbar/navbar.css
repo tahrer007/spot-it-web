@@ -5,9 +5,7 @@
     background: rgb(46, 46, 46);
     width: 100vw;
     height: 10%;
-    position: fixed;
-    top: 0;
-    left: 0;
+    
   }
   .navbarLeft {
     display: flex;

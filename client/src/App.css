@@ -6,4 +6,13 @@
   height: 100vh;
   width:100vw ;
   background-color: aqua;
+  display: flex;
+  flex-direction: column;
+}
+.pagesContainer{
+  width: 100vw;
+  height: 90%;
+  margin: 0;
+  padding: 0;
+  background-color: coral;
 }

@@ -1,3 +1,18 @@
+.home{
+  display: flex;
+  
+}
+.LocationsMap{
+  height: 100%;
+  width: 80%;
+  background-color: green;
+}
+.homePageLeft{
+  height: 100%;
+  width: 20%;
+  background-color: red;
+}
+
 .searchBar{
     position: absolute;
     top: 1rem;

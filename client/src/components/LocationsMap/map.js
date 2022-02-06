@@ -3,9 +3,10 @@ import myApi from "../../api/api";
 import Search from "./search/search";
 import Locate from "./currentLocation/currentLocation";
 import mapStyles from "./mapStyles";
-import isInsideHaifa from "./scripts/insideHaifa";
-import HaifaCoords from "./scripts/haifaCoords";
+import isInsideHaifa from "../../scripts/insideHaifa";
+import HaifaCoords from "../../scripts/haifaCoords";
 import "../../App.css";
+import "../../pages/home/home.css";
 import {
   GoogleMap,
   useLoadScript,
@@ -80,9 +81,9 @@ export default function Map() {
         comment: "TEST from client !!",
         number: "more than 1000",
       };
-      setMarkers((current) => [...current, newLocation]); 
-     
-      addLocation(newLocation);//add new location to db
+      setMarkers((current) => [...current, newLocation]);
+
+      addLocation(newLocation); //add new location to db
     }
   }, []);
 
@@ -100,7 +101,7 @@ export default function Map() {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div>
+    <div className="LocationsMap">
       <Locate panTo={panTo} />
       <Search panTo={panTo} />
 
@@ -153,8 +154,9 @@ export default function Map() {
                 </span>{" "}
                 Alert
               </h2>
-              <p>Spotted {formatRelative(Date.parse(selected.time), new Date())}</p>
-              {console.log(typeof(selected.time))}
+              <p>
+                Spotted {formatRelative(Date.parse(selected.time), new Date())}
+              </p>
             </div>
           </InfoWindow>
         ) : null}

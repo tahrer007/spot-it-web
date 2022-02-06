@@ -1,17 +1,12 @@
 import React from "react";
-import Map from "../googleMap/map";
+import Map from "../../components/LocationsMap/map";
+import "../../App.css"
 
  function Home() {
   return (
-    <div>
-      <h1>
-        Pumbaa{" "}
-        <span role="img" aria-label="tent">
-          🐗
-        </span>
-      </h1>
-
+    <div className="pagesContainer home">
       <Map />
+      <div className="homePageLeft"></div>
     </div>
   );
 }
