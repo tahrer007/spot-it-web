@@ -7,6 +7,7 @@ const DB_URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.auigb.mongo
 mongoose.connect(DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+   //autoIndex: false 
 }).then(() => {
   console.log("Database has been connected!");
  

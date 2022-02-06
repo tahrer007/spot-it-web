@@ -11,7 +11,6 @@ const getLocations = async (req, res) => {
 };
 
 const addLocation = async (req, res) => {
-  
   const newLocation = new Location({
     lat: req.body.lat,
     lng: req.body.lng,
@@ -21,14 +20,6 @@ const addLocation = async (req, res) => {
   });
 
   try {
-    console.log("new location ")
-    //const userExist = await isUserExist(user.id);
-    /*if (userExist) {
-      throw new Error("user already exist");
-    } else {
-      const newUser = await user.save();
-      res.status(201).json(newUser);
-    }*/
     const addLocation = await newLocation.save();
     res.status(201).json(addLocation);
   } catch (err) {

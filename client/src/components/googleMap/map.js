@@ -31,34 +31,41 @@ const center = {
 //const GOOGLEAPIKEY = process.env.GOOGLE_MAPS_KEY_API  ;
 
 export default function Map() {
-  const addLocation = async (newLocation) => {
-    console.log(newLocation)
-     myApi.post('/locations/addLocation', newLocation)
-    .then((response) => {
-      console.log(response);
-    }, (error) => {
-      console.log(error);
-    });
+  const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState(null);
+
+  const intialMarks = (dbMarks) => {
+    setMarkers(dbMarks);
   };
 
-  /*useEffect(() => {
+  useEffect(() => {
     const getALLlocations = async () => {
       try {
-        const { data } = await myApi.get("locations/getAllLocations");
-        console.log(data);
+        const { data } = await myApi.get("locations/getLocations");
+        intialMarks(data);
       } catch (error) {
         console.log(error);
       }
     };
     getALLlocations();
-  }, []);*/
-  isInsideHaifa(center);
+  }, []);
+
+  const addLocation = async (newLocation) => {
+    console.log(newLocation);
+    myApi.post("/locations/addLocation", newLocation).then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
     libraries,
   });
-  const [markers, setMarkers] = useState([]);
-  const [selected, setSelected] = useState(null);
 
   const onMapClick = useCallback((e) => {
     const lat = e.latLng.lat();
@@ -66,19 +73,16 @@ export default function Map() {
     if (!isInsideHaifa({ lat, lng })) {
       console.log("outside the boundries");
     } else {
-      const newLocation ={
+      const newLocation = {
         lat: lat,
         lng: lng,
         time: new Date(),
-        comment : "TEST from client !!",
-        number : "more than 1000"
-      }
-      setMarkers((current) => [
-        ...current,
-        newLocation,
-      ]);
-      addLocation(newLocation) ;
-
+        comment: "TEST from client !!",
+        number: "more than 1000",
+      };
+      setMarkers((current) => [...current, newLocation]); 
+     
+      addLocation(newLocation);//add new location to db
     }
   }, []);
 
@@ -103,7 +107,7 @@ export default function Map() {
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={13}
+        zoom={12}
         center={center}
         options={options}
         onLoad={onMapLoad}
@@ -149,8 +153,8 @@ export default function Map() {
                 </span>{" "}
                 Alert
               </h2>
-              <p>Spotted {formatRelative(selected.time, new Date())}</p>
-              {console.log(typeof selected.time, selected.time)}
+              <p>Spotted {formatRelative(Date.parse(selected.time), new Date())}</p>
+              {console.log(typeof(selected.time))}
             </div>
           </InfoWindow>
         ) : null}
