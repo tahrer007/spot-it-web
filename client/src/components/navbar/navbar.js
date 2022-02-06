@@ -18,6 +18,9 @@ export default class Navbar extends Component {
         <Link className="navbarLink navbarBtn" to="/help">
           Help
         </Link>
+        <Link className="navbarLink navbarBtn" to="/">
+            log in
+          </Link>
       </header>
     );
   }
