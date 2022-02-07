@@ -172,7 +172,7 @@ export default function Map({ handelMapClick }) {
               setSelected(null);
             }}
           >
-            <div>
+            <div className="InfoWindow">
               <h2>
                 <span role="img" aria-label="wild pig">
                   🐗
@@ -180,8 +180,11 @@ export default function Map({ handelMapClick }) {
                 Alert
               </h2>
               <p>
-                Spotted {formatRelative(Date.parse(selected.time), new Date())}
+              Spotted {formatRelative(Date.parse(selected.time), new Date())}<br/>
+               {selected.number} <br/>
+               {(selected.comment)? "comment :"+ selected.comment :null  }
               </p>
+             
             </div>
           </InfoWindow>
         ) : null}
