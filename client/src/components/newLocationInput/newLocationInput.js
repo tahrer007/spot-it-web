@@ -18,9 +18,9 @@ export default function NewLocationInput() {
     e.preventDefault();
     console.log("You clicked submit.");
   };
-  const cancel = ()=>{
-    console.log("cancel")
-  }
+  const cancel = () => {
+    console.log("cancel");
+  };
   return (
     <div className="newLocationBox">
       <h2> Please add some details :</h2>
@@ -55,18 +55,21 @@ export default function NewLocationInput() {
             More than 5
           </label>
         </div>
+        <strong>
+          {" "}
+          Extra details? <span>(optional)</span>{" "}
+        </strong>
         <div className="extraDetails">
-          <strong>
-            {" "}
-            Extra details? <span>(optional)</span>{" "}
-          </strong>
-
           <label>
             <textarea value={details} onChange={handleTextChange} />
           </label>
         </div>
-        <button type="submit">Submit</button>
-        <button type="reset" onClick={()=>cancel()}>cancel</button>
+        <div className="buttons">
+          <button type="submit">Submit</button>
+          <button type="reset" onClick={() => cancel()}>
+            cancel
+          </button>
+        </div>
       </form>
     </div>
   );

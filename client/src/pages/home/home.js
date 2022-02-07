@@ -7,6 +7,9 @@ import "./home.css"
 
  function Home() {
    const [newLocation,setNewLocation] =useState(true);
+   const [formData,setFormData] = useState(null);
+   const [cancelMark,setCancelMark] =useState(false);
+   const [newMark,setNewMark] =useState({});
 
    
 
