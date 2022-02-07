@@ -1,4 +1,5 @@
 import React from "react";
+import "./search.css"
 
 import {} from "@react-google-maps/api";
 import usePlacesAutocomplete, {
@@ -45,19 +46,21 @@ export default function Search({ panTo }) {
   };
 
   return (
-    <div className="searchBar">
-      <Combobox onSelect={handleSelect}>
+    
+      <Combobox onSelect={handleSelect}  className="searchBox">
         <ComboboxInput
           value={value}
           onChange={handleInput}
           disabled={!ready}
           placeholder="Search your location"
+          className="searchInput"
         />
-        <ComboboxPopover>
-          <ComboboxList>
+        <ComboboxPopover  className="ComboboxPopover">
+          <ComboboxList >
             {status === "OK" &&
               data.map(({ id, description }) => (
                 <ComboboxOption
+                className="ComboboxOption"
                   key={description.place_id}
                   value={description}
                 />
@@ -65,6 +68,6 @@ export default function Search({ panTo }) {
           </ComboboxList>
         </ComboboxPopover>
       </Combobox>
-    </div>
+    
   );
 }
