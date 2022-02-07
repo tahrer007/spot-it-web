@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./newLocationInput.css";
 
-export default function NewLocationInput() {
-  const [howMany, setHowMany] = useState("");
+export default function NewLocationInput({ handelForm }) {
+  const [howMany, setHowMany] = useState("one");
   const [details, setDetails] = useState("");
 
   const handleRadioChange = (event) => {
     setHowMany(event.target.value);
-    console.log(event.target.value);
   };
   const handleTextChange = (event) => {
     setDetails(event.target.value);
-    console.log(event.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("You clicked submit.");
+    handelForm(howMany, details);
   };
-  const cancel = () => {
-    console.log("cancel");
-  };
+  const cancel = (e) => handelForm(false, false);
+
   return (
     <div className="newLocationBox">
       <h2> Please add some details :</h2>

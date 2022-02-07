@@ -35,7 +35,7 @@ const center = {
 export default function Map() {
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [newMark , setNewMark] = useState([]);
+  const [newMark, setNewMark] = useState([]);
 
   const intialMarks = (dbMarks) => {
     setMarkers(dbMarks);
