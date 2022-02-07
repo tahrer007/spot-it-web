@@ -1,0 +1,10 @@
+.locate {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url("../../../../public/location1.png") no-repeat center
+    center/cover;
+  z-index: 100;
+  top: 1vw;
+  right: 1vw;
+}

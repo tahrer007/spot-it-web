@@ -1,4 +1,5 @@
 import React from "react";
+import "./currentLocation.css"
 
 export default function Locate({ panTo }) {
   const getCurrentLocation = () => {
@@ -35,8 +36,7 @@ export default function Locate({ panTo }) {
   };
 
   return (
-    <button className="locate" onClick={() => getCurrentLocation()}>
-      current location
-    </button>
+    <div className="locate" onClick={() => getCurrentLocation()}>
+    </div>
   );
 }

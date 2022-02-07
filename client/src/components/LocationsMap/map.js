@@ -101,7 +101,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
 
   return (
     <div className="locationsMap">
-      {/*<Locate panTo={panTo} /> */}
+      <Locate panTo={panTo} /> 
       <Search panTo={panTo} />
 
       <GoogleMap
