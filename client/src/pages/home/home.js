@@ -1,12 +1,16 @@
 import React ,{useState,useEffect} from "react";
 import Map from "../../components/LocationsMap/map";
 import NewLocationInput from "../../components/newLocationInput/newLocationInput";
+import HomeText from "../../components/homeText/homeText"
 import "../../App.css";
 import "./home.css"
 
  function Home() {
-   const [newLocation,setNewLocation] =useState(false);
+   const [newLocation,setNewLocation] =useState(true);
+
    
+
+
   return (
     <div className="pagesContainer home">
       
@@ -15,7 +19,7 @@ import "./home.css"
       </div>
      
       <div className="homePageLeft">
-            <NewLocationInput/>
+           {newLocation?<NewLocationInput/> : <HomeText/> } 
       </div>
     </div>
   );

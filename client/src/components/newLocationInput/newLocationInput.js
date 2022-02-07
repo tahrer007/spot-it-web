@@ -4,7 +4,7 @@ import "./newLocationInput.css"
 
 export default function NewLocationInput() {
   return (
-    <div className="NewLocationBox">
+    <div className="newLocationBox">
           new location box    
     </div>
   );
