@@ -27,8 +27,8 @@ const options = {
   zoomControl: true,
 };
 const center = {
-  lat: 32.81841,
-  lng: 34.9885,
+  lat: 32.794241949530296,
+  lng: 34.98972566204482,
 };
 
 export default function Map({ handelMapClick, updateDbMarks, cancel }) {
@@ -72,6 +72,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
   const onMapClick = (e) => {
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
+    console.log({ lat, lng })
 
     if (!isInsideHaifa({ lat, lng })) {
       handelMapClick(false);
@@ -107,7 +108,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={12}
+        zoom={12.5}
         center={center}
         options={options}
         onLoad={onMapLoad}
