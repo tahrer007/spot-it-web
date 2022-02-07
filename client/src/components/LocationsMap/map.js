@@ -54,18 +54,6 @@ export default function Map({ handelMapClick }) {
     getALLlocations();
   }, []);
 
-  const addLocation = async (newLocation) => {
-    console.log(newLocation);
-    myApi.post("/locations/addLocation", newLocation).then(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  };
-
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
     libraries,
@@ -110,7 +98,6 @@ export default function Map({ handelMapClick }) {
     setLocalMark(true);
     handelMapClick(newLocation); 
   };
-  
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
@@ -164,7 +151,7 @@ export default function Map({ handelMapClick }) {
 
         {markers.map((marker) => (
           <Marker
-            key={`${marker.lat}-${marker.lng}`}
+            key={marker._id}
             position={{ lat: marker.lat, lng: marker.lng }}
             onClick={() => {
               setSelected(marker);
