@@ -72,7 +72,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
   const onMapClick = (e) => {
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
-    console.log({ lat, lng })
+    console.log({ lat, lng });
 
     if (!isInsideHaifa({ lat, lng })) {
       handelMapClick(false);
@@ -102,7 +102,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
 
   return (
     <div className="locationsMap">
-      <Locate panTo={panTo} /> 
+      <Locate panTo={panTo} />
       <Search panTo={panTo} />
 
       <GoogleMap
