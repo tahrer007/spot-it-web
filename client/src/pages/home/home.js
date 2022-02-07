@@ -19,14 +19,14 @@ function Home() {
     }
   };
 
-  const handelMapClcik = (lat,lng) => {
-    console.log(lat,lng)
+  const handelMapClick = (newLocationData) => {
+    console.log(newLocationData);
   };
 
   return (
     <div className="pagesContainer home">
       <div className="homePageRight">
-        <Map />
+        <Map  handelMapClick={handelMapClick}/>
       </div>
 
       <div className="homePageLeft">

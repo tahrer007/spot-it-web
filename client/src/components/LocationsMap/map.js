@@ -32,10 +32,11 @@ const center = {
 };
 //const GOOGLEAPIKEY = process.env.GOOGLE_MAPS_KEY_API  ;
 
-export default function Map() {
+export default function Map({ handelMapClick }) {
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [newMark, setNewMark] = useState([]);
+  const [newMark, setNewMark] = useState({});
+  const [localMark, setLocalMark] = useState(false);
 
   const intialMarks = (dbMarks) => {
     setMarkers(dbMarks);
@@ -70,10 +71,18 @@ export default function Map() {
     libraries,
   });
 
-  const onMapClick = useCallback((e) => {
+  /*const onMapClick = useCallback((e) => {
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
-    if (!isInsideHaifa({ lat, lng })) {
+    const newLocation = {
+      lat: lat,
+      lng: lng,
+      time: new Date(),
+    };
+
+    setNewMark(newLocation);
+
+    /*if (!isInsideHaifa({ lat, lng })) {
       console.log("outside the boundries");
     } else {
       const newLocation = {
@@ -87,8 +96,21 @@ export default function Map() {
 
       addLocation(newLocation); //add new location to db
     }
-  }, []);
+  }, []);*/
 
+  const onMapClick = (e) => {
+    const lat = e.latLng.lat();
+    const lng = e.latLng.lng();
+    const newLocation = {
+      lat: lat,
+      lng: lng,
+      time: new Date(),
+    };
+    setNewMark(newLocation);
+    setLocalMark(true);
+    handelMapClick(newLocation); 
+  };
+  
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
@@ -125,6 +147,20 @@ export default function Map() {
           fillColor="#0000FF"
           fillOpacity={0.35}
         />
+        {localMark ? (
+          <Marker
+            position={{ lat: newMark.lat, lng: newMark.lng }}
+            onClick={() => {
+              setSelected(newMark);
+            }}
+            icon={{
+              url: `./local.png`,
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(15, 15),
+              scaledSize: new window.google.maps.Size(30, 30),
+            }}
+          />
+        ) : null}
 
         {markers.map((marker) => (
           <Marker
