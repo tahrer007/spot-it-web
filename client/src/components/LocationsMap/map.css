@@ -6,8 +6,9 @@
     padding: 0.5vw;
     display:flex ;
     justify-content: center;
-    position: absolute;
+   
 }
 .infoWindow{
     text-align: center;
 }
+

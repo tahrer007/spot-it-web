@@ -30,9 +30,8 @@ const center = {
   lat: 32.81841,
   lng: 34.9885,
 };
-//const GOOGLEAPIKEY = process.env.GOOGLE_MAPS_KEY_API  ;
 
-export default function Map({ handelMapClick }) {
+export default function Map({ handelMapClick, updateDbMarks, cancel }) {
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
   const [newMark, setNewMark] = useState({});
@@ -54,49 +53,38 @@ export default function Map({ handelMapClick }) {
     getALLlocations();
   }, []);
 
+  useEffect(() => {
+    if (!updateDbMarks) return;
+    setMarkers((current) => [...current, updateDbMarks]);
+    setLocalMark(false);
+  }, [updateDbMarks]);
+
+  useEffect(() => {
+    if (!cancel) return;
+    setLocalMark(false);
+  }, [cancel]);
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
     libraries,
   });
 
-  /*const onMapClick = useCallback((e) => {
+  const onMapClick = (e) => {
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
-    const newLocation = {
-      lat: lat,
-      lng: lng,
-      time: new Date(),
-    };
 
-    setNewMark(newLocation);
-
-    /*if (!isInsideHaifa({ lat, lng })) {
-      console.log("outside the boundries");
+    if (!isInsideHaifa({ lat, lng })) {
+      handelMapClick(false);
     } else {
       const newLocation = {
         lat: lat,
         lng: lng,
         time: new Date(),
-        comment: "TEST from client !!",
-        number: "more than 1000",
       };
-      setMarkers((current) => [...current, newLocation]);
-
-      addLocation(newLocation); //add new location to db
+      setNewMark(newLocation);
+      setLocalMark(true);
+      handelMapClick(newLocation);
     }
-  }, []);*/
-
-  const onMapClick = (e) => {
-    const lat = e.latLng.lat();
-    const lng = e.latLng.lng();
-    const newLocation = {
-      lat: lat,
-      lng: lng,
-      time: new Date(),
-    };
-    setNewMark(newLocation);
-    setLocalMark(true);
-    handelMapClick(newLocation); 
   };
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
@@ -180,15 +168,16 @@ export default function Map({ handelMapClick }) {
                 Alert
               </h2>
               <p>
-              Spotted {formatRelative(Date.parse(selected.time), new Date())}<br/>
-               {selected.number} <br/>
-               {(selected.comment)? "comment :"+ selected.comment :null  }
+                Spotted {formatRelative(Date.parse(selected.time), new Date())}
+                <br />
+                number : {selected.number} <br />
+                {selected.comment ? "comment :" + selected.comment : null}
               </p>
-             
             </div>
           </InfoWindow>
         ) : null}
       </GoogleMap>
+      <div className="errorMessage"></div>
     </div>
   );
 }
