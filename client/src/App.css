@@ -8,10 +8,11 @@
   background-color: aqua;
   display: flex;
   flex-direction: column;
+ 
 }
 .pagesContainer{
   width: 100vw;
-  height: 90%;
+  height:93vh;
   margin: 0;
   padding: 0;
   background-color: coral;

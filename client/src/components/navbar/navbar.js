@@ -12,6 +12,9 @@ export default class Navbar extends Component {
             Homepage
           </Link>
         </div>
+        <Link className="navbarLink navbarBtn" to="/">
+          Red neighborhoods
+        </Link>
         <Link className="navbarLink navbarBtn" to="/about">
           About
         </Link>
@@ -19,8 +22,8 @@ export default class Navbar extends Component {
           Help
         </Link>
         <Link className="navbarLink navbarBtn" to="/">
-            log in
-          </Link>
+          Log in
+        </Link>
       </header>
     );
   }

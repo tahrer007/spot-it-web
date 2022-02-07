@@ -2,23 +2,23 @@
   display: flex;
   
 }
-.LocationsMap{
-  height: 100%;
-  width: 80%;
-  background-color: green;
-}
-.homePageLeft{
-  height: 100%;
-  width: 20%;
-  background-color: red;
+
+.homePageRight{
+  height:100%;
+  width: 65%;
+  background-color: violet;
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  position: relative;
+
 }
 
-.searchBar{
-    position: absolute;
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 400px;
-    z-index: 10;
-  }
+.homePageLeft{
+  height: 100%;
+  width: 35%;
+  background-color: red;
+  margin:0;
+  padding:0;
+ 
+}

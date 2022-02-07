@@ -7,6 +7,7 @@ import isInsideHaifa from "../../scripts/insideHaifa";
 import HaifaCoords from "../../scripts/haifaCoords";
 import "../../App.css";
 import "../../pages/home/home.css";
+import "./map.css";
 import {
   GoogleMap,
   useLoadScript,
@@ -17,8 +18,8 @@ import {
 import { formatRelative } from "date-fns";
 const libraries = ["places"];
 const mapContainerStyle = {
-  height: "80vh",
-  width: "80vw",
+  width: "100%",
+  height: "90vh",
 };
 const options = {
   styles: mapStyles,
@@ -101,9 +102,9 @@ export default function Map() {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div className="LocationsMap">
-      <Locate panTo={panTo} />
-      <Search panTo={panTo} />
+    <div className="locationsMap">
+      {/*<Locate panTo={panTo} /> 
+      <Search panTo={panTo} />*/}
 
       <GoogleMap
         id="map"
