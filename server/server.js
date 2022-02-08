@@ -35,6 +35,11 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+app.all('*', (req, res) => {
+  res.sendFile(path.resolve(publicPath, 'index.html'));
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server running on Port: ${PORT}`);
 });

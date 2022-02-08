@@ -44,7 +44,8 @@ function Home() {
       myApi.post("/locations/addLocation", newMark).then(
         (response) => {
           console.log(response.data);
-          setSuccessfullyPosted(response.data)
+          setSuccessfullyPosted(response.data) ;
+          setNewMark({});
          setTimeout(() => {
           setSuccessfullyPosted(null);
         }, 500);
