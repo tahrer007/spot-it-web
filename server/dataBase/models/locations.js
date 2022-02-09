@@ -25,11 +25,11 @@ const locationsSchema = new Schema(
       required: [true, "Please provide a number"],
     },
     
-    //expire_at: { type: Date, default: Date.now, expires: 30 },
+    expire_at: { type: Date, default: Date.now, expires: 172800 },//delete after 72 hours 
   },
   {
-    timestamps: true,
-    expire_at: { type: Date, default: Date.now, expires: 3600 },//delete after 72 hours 
+    //timestamps: true,
+   // expire_at: { type: Date, default: Date.now, expires: 3600 },
   }
 );
 
