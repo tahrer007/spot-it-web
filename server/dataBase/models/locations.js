@@ -26,11 +26,11 @@ const locationsSchema = new Schema(
     },
     
     expire_at: { type: Date, 
-      default: new Date(new Date().valueOf() + 172800),
+      default: new Date(new Date().valueOf() + 172800000),
       /* Remove doc 60 seconds after specified date */
     
       
-      expires: 60},//delete after 72 hours 
+      expires: 60},
   },
   
 );
