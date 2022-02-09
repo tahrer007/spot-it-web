@@ -26,7 +26,7 @@ const locationsSchema = new Schema(
     },
     
     expire_at: { type: Date, 
-      default: new Date(new Date().valueOf() + 300000),
+      default: new Date(new Date().valueOf() + 172800),
       /* Remove doc 60 seconds after specified date */
     
       
