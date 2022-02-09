@@ -3,6 +3,7 @@ import "./currentLocation.css"
 
 export default function Locate({ panTo }) {
   const getCurrentLocation = () => {
+    console.log("test")
     /*navigator.geolocation.getCurrentPosition(
       (position) => {
         // console.log(position);
@@ -17,10 +18,12 @@ export default function Locate({ panTo }) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const pos = {
+           
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
-          console.log(pos);
+          console.log(pos)
+         
           panTo(pos);
         },
         (error) => {

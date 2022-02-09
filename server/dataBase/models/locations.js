@@ -25,12 +25,14 @@ const locationsSchema = new Schema(
       required: [true, "Please provide a number"],
     },
     
-    expire_at: { type: Date, default: Date.now, expires: 172800 },//delete after 72 hours 
+    expire_at: { type: Date, 
+      default: new Date(new Date().valueOf() + 300000),
+      /* Remove doc 60 seconds after specified date */
+    
+      
+      expires: 60},//delete after 72 hours 
   },
-  {
-    //timestamps: true,
-   // expire_at: { type: Date, default: Date.now, expires: 3600 },
-  }
+  
 );
 
 

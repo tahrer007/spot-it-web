@@ -1,0 +1,7 @@
+.loginBox{
+    width: 20vmin;
+    height: 20vmin;
+    background-color: blueviolet;
+   
+    display: flex;
+}
