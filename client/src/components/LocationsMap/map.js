@@ -97,12 +97,14 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
     mapRef.current.setZoom(16);
   }, []);
 
+
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
 
   return (
     <div className="locationsMap">
-      <Locate panTo={panTo} />
+            <Locate panTo={panTo} />
+
       <Search panTo={panTo} />
 
       <GoogleMap

@@ -1,45 +1,36 @@
 import React from "react";
-import "./currentLocation.css"
+import "./currentLocation.css";
 
 export default function Locate({ panTo }) {
-  const getCurrentLocation = () => {
-    console.log("test")
-    /*navigator.geolocation.getCurrentPosition(
-      (position) => {
-        // console.log(position);
-        panTo({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-      },
-      (error) => console.log(error.message)
-    );*/
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-           
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          console.log(pos)
-         
-          panTo(pos);
-        },
-        (error) => {
-          console.log(error.message);
-          // handleLocationError(true, infoWindow, map.getCenter());
-        }
-      );
-    } else {
-      console.log("Browser doesn't support Geolocation");
-      // Browser doesn't support Geolocation
-      // handleLocationError(false, infoWindow, map.getCenter());
+
+  const getCurrentLocation =  () => {
+
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+  
+    const success = (pos) => {
+      const crd = {
+              lat : pos.coords.latitude ,
+              lng : pos.coords.longitude ,
+
+      }
+
+      console.log(crd);
+      panTo(crd);
+    };
+  
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
     }
+  
+    navigator.geolocation.getCurrentPosition(success, error, options);
+
   };
 
-  return (
-    <div className="locate" onClick={() => getCurrentLocation()}>
-    </div>
-  );
+  
+
+  return <div className="locate" onClick={() => getCurrentLocation()}></div>;
 }
