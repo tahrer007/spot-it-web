@@ -29,7 +29,7 @@ const locationsSchema = new Schema(
   },
   {
     timestamps: true,
-    expire_at: { type: Date, default: Date.now, expires: 259200 },//delete after 72 hours 
+    expire_at: { type: Date, default: Date.now, expires: 3600 },//delete after 72 hours 
   }
 );
 
