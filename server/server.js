@@ -5,14 +5,27 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const logger = require('morgan');
+const subscriptionHandler = require('./subscriptionHandler');
 const locationsRouter = require("./routers/locationsRouter");
 const usersRouter = require("./routers/usersRouter");
 
 app.use(bodyParser.urlencoded());
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: '*', // allow to server to accept request from different origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true // allow session cookie from browser to pass through
+  })
+);
+app.use(logger('dev'));
 app.use("/users", usersRouter);
 app.use("/locations", locationsRouter);
+
+
+app.post('/subscription', subscriptionHandler.handlePushNotificationSubscription);
+app.get('/subscription/:id', subscriptionHandler.sendPushNotification);
 
 const PORT = process.env.PORT || 5000;
 
