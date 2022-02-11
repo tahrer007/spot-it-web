@@ -11,8 +11,8 @@ import RedNeighborhoods from "./pages/redneighborhoods/redNeighborhoods";
 
 function App() {
   return (
-    <div  className="appContainer">
-     
+    <div  className="appContainer" >
+      
       <Router>
            <Navbar />
         <Routes>
@@ -24,7 +24,8 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
-    </div>
+      </div>
+    
   );
 }
 export default App;

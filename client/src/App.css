@@ -1,6 +1,15 @@
 *{
   margin: 0;
   padding: 0;
+ 
+}
+@font-face {
+  font-family: african;
+  src: url(./assets/fonts/african/african.ttf);
+}
+@font-face {
+  font-family: lion_king;
+  src: url(./assets/fonts/lion_king/lion_king.ttf);
 }
 .appContainer{
   height: 100%;
@@ -8,6 +17,8 @@
   background-color: aqua;
   display: flex;
   flex-direction: column;
+  position: relative;
+  font-family: african;
  
 }
 .pagesContainer{
