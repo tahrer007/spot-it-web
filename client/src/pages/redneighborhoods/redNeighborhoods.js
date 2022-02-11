@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import "../../App.css";
 import "./redNeighborhoods.css";
-import Map from "../../components/LocationsMap/map"
+import Map from "../../components/redAreaMap/redMap"
 
 export default function redNeighborhoods() {
   
