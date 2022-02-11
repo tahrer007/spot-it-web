@@ -1,13 +1,12 @@
 .home{
   display: flex;
   box-sizing: border-box;
-  
+  background-image: linear-gradient(to right top, #faebd7, #fdd8c9, #fbc5c6, #eeb5cf, #d0acdd, #b8b1ec, #95b8f6, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);  
 }
 
 .homePageLeft{
   height:100%;
   width: 65%;
-  background-color: violet;
   margin:0;
   padding:0;
   box-sizing: border-box;
@@ -17,7 +16,6 @@
 .homePageRight{
   height: 100%;
   width: 35%;
-  background-color: red;
   margin:0;
   padding:0.5vw;
   box-sizing: border-box;
@@ -26,6 +24,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: url("../../assets/images/44.jpg") no-repeat center center/cover;
+ 
 }
 
 .yyyerrorMessage{
@@ -33,7 +33,6 @@
   width: 100%;
   top: 0;
   left: 0;
-  background-color: deeppink;
   position: absolute;
   
 }

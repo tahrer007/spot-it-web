@@ -7,7 +7,7 @@ export default function HomeText() {
       <h3> How its work ? </h3>
       <div className="list">
         <ol>
-          <li>Click on the map at the wanted location </li>
+          <li>Add MARK TO THE WANTED LOCATION </li>
           <li>Fill few information </li>
           <li>Click send </li>
         </ol>

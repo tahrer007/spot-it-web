@@ -1,19 +1,23 @@
 .homeText {
-  background-color: violet;
   width: 90%;
-  height: 90%;
-  padding: 1vw;
+  height: fit-content;
+  padding: 2vh;
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 0.5vw;
   box-sizing: border-box;
+  background: #111845a6;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgb(23, 32, 90);
+  border: 2px solid rgb(247, 224, 193);
+  padding: 20px;
 }
 
-ol{
+ol {
   padding: 2vh 0;
   list-style-position: inside;
 }
-li{
+li {
   padding: 1vh 0;
 }

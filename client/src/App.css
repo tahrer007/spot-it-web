@@ -12,7 +12,7 @@
   src: url(./assets/fonts/lion_king/lion_king.ttf);
 }
 .appContainer{
-  color: antiquewhite;
+  color: #faebd7;
   height: 100%;
   width:100%;
   background-color: aqua;
@@ -28,7 +28,8 @@
   height:93vh;
   margin: 0;
   padding: 0;
-  background-color: coral;
+  background: url("./assets/images/44.jpg") no-repeat center center/cover;
+
 }
 
 /*to ask the user to use landscape*/
