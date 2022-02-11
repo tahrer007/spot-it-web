@@ -5,11 +5,6 @@ import "../../pages/home/home.css";
 import "./redMap.css";
 import redAreaArr from "./redArea";
 import { geocodeByPlaceId } from "react-google-places-autocomplete";
-/*import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";*/
-
 import {
   GoogleMap,
   useLoadScript,
@@ -24,7 +19,7 @@ const mapContainerStyle = {
 const libraries = ["places"];
 const options = {
   styles: mapStyles,
-  disableDefaultUI: false,
+  disableDefaultUI: true,
   zoomControl: true,
 };
 const center = {
@@ -34,24 +29,30 @@ const center = {
 
 export default function Map() {
   const [markers, setMarkers] = useState([]);
+  const [haveLocation, setHaveLocation] = useState(false);
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     const getRedAreas = async () => {
-      const arr = [];
-
       redAreaArr.forEach((element) => {
         geocodeByPlaceId(element.place_id)
           .then((results) => {
-            arr.push({
-              name: results[0].formatted_address.split(",").slice(0,1).join(""),
+            const obj = {
+              name: results[0].formatted_address
+                .split(",")
+                .slice(0, 1)
+                .join(""),
               lat: results[0].geometry.location.lat(),
               lng: results[0].geometry.location.lng(),
-            });
+            };
+
+            setMarkers((current) => [...current, obj]);
           })
           .catch((error) => console.error(error));
-      });
-      setMarkers(arr);
+         
+      }
+    );
+   
     };
 
     setTimeout(() => {
@@ -59,8 +60,8 @@ export default function Map() {
     }, 2000);
   }, []);
 
-  useEffect(() => {
-    console.log(markers);
+  useEffect(() => { 
+    if(markers.length===redAreaArr.length)setHaveLocation(true) ; 
   }, [markers]);
 
   const { isLoaded, loadError } = useLoadScript({
@@ -98,9 +99,9 @@ export default function Map() {
         onLoad={onMapLoad}
         onClick={onMapClick}
       >
-        {/*markers.map((marker) => (
+        {haveLocation && markers.map((marker) => (
           <Marker
-            key={marker._id}
+            key={marker.place_id+""+Math.random()}
             position={{ lat: marker.lat, lng: marker.lng }}
             onClick={() => {
               setSelected(marker);
@@ -112,7 +113,7 @@ export default function Map() {
               scaledSize: new window.google.maps.Size(30, 30),
             }}
           />
-          ))*/}
+        ))}
 
         {selected ? (
           <InfoWindow
@@ -124,11 +125,11 @@ export default function Map() {
             <div className="InfoWindow">
               <h2>
                 <span role="img" aria-label="wild pig">
-                  🐗
+                  🏘️
                 </span>{" "}
-                name
+               {selected.name}
               </h2>
-              <p>area</p>
+             
             </div>
           </InfoWindow>
         ) : null}
