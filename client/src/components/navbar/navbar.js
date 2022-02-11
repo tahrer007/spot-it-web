@@ -7,11 +7,11 @@ export default class Navbar extends Component {
     return (
       <header className="navbar">
         <div className="navbarLeft">
-          <div className="navbarLogo"> logo</div>
-          <Link className="navbarLink navbarBtn" to="/">
-            Homepage
-          </Link>
+          <div className="navbarLogo"></div>
         </div>
+        <Link className="navbarLink navbarBtn" to="/">
+          Homepage
+        </Link>
         <Link className="navbarLink navbarBtn" to="/Redneighborhoods">
           Red neighborhoods
         </Link>
@@ -21,9 +21,9 @@ export default class Navbar extends Component {
         <Link className="navbarLink navbarBtn" to="/help">
           Help
         </Link>
-        <Link className="navbarLink navbarBtn" to="/login">
+        {/*<Link className="navbarLink navbarBtn" to="/login">
           Log in
-        </Link>
+  </Link>*/}
       </header>
     );
   }

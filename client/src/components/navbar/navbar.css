@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  align-items: center;
   align-items: center;
   background: rgb(46, 46, 46);
   width: 100vw;
@@ -15,7 +16,8 @@
 
 .navbarLogo {
   height: 100%;
-  width: 10%;
+  width: 30%;
+  background-color: blue;
 }
 
 .navbarLink {
