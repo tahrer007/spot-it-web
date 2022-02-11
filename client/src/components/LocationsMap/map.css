@@ -10,4 +10,9 @@
 
 .infoWindow{
     text-align: center;
+   
+}
+h2 ,p{
+    color :#6d512c ; 
+    letter-spacing: normal;
 }

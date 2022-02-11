@@ -157,6 +157,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
 
         {selected ? (
           <InfoWindow
+          className="InfoWindow"
             position={{ lat: selected.lat, lng: selected.lng }}
             onCloseClick={() => {
               setSelected(null);
@@ -173,7 +174,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
                 Spotted {formatRelative(Date.parse(selected.time), new Date())}
                 <br />
                 number : {selected.number} <br />
-                {selected.comment ? "comment :" + selected.comment : null}
+                {selected.comment ? "comment : " + selected.comment : null}
               </p>
             </div>
           </InfoWindow>
