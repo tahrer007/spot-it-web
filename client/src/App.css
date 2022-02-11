@@ -12,6 +12,7 @@
   src: url(./assets/fonts/lion_king/lion_king.ttf);
 }
 .appContainer{
+  color: antiquewhite;
   height: 100%;
   width:100%;
   background-color: aqua;
@@ -19,7 +20,8 @@
   flex-direction: column;
   position: relative;
   font-family: african;
- 
+  letter-spacing:0.3vw;
+  
 }
 .pagesContainer{
   width: 100vw;

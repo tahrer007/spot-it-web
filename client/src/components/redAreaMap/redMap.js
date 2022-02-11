@@ -28,13 +28,12 @@ const center = {
 };
 
 export default function Map() {
-  const [markers, setMarkers] = useState([]);
-  const [haveLocation, setHaveLocation] = useState(false);
+  const [markers, setMarkers] = useState(redAreaArr);
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     const getRedAreas = async () => {
-      redAreaArr.forEach((element) => {
+      /*redAreaArr.forEach((element) => {
         geocodeByPlaceId(element.place_id)
           .then((results) => {
             const obj = {
@@ -49,20 +48,12 @@ export default function Map() {
             setMarkers((current) => [...current, obj]);
           })
           .catch((error) => console.error(error));
-         
-      }
-    );
-   
+      });*/
     };
-
-    setTimeout(() => {
-      getRedAreas();
-    }, 2000);
+    //getRedAreas();
   }, []);
 
-  useEffect(() => { 
-    if(markers.length===redAreaArr.length)setHaveLocation(true) ; 
-  }, [markers]);
+  
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
@@ -80,10 +71,10 @@ export default function Map() {
     mapRef.current = map;
   }, []);
 
-  const panTo = useCallback(({ lat, lng }) => {
+  /*const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(16);
-  }, []);
+  }, []);*/
 
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
@@ -99,21 +90,22 @@ export default function Map() {
         onLoad={onMapLoad}
         onClick={onMapClick}
       >
-        {haveLocation && markers.map((marker) => (
-          <Marker
-            key={marker.place_id+""+Math.random()}
-            position={{ lat: marker.lat, lng: marker.lng }}
-            onClick={() => {
-              setSelected(marker);
-            }}
-            icon={{
-              url: `./location.png`,
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(15, 15),
-              scaledSize: new window.google.maps.Size(30, 30),
-            }}
-          />
-        ))}
+        {
+          markers.map((marker) => (
+            <Marker
+              key={marker.place_id + "" + Math.random()}
+              position={{ lat: marker.lat, lng: marker.lng }}
+              onClick={() => {
+                setSelected(marker);
+              }}
+              icon={{
+                url: `./location.png`,
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(15, 15),
+                scaledSize: new window.google.maps.Size(30, 30),
+              }}
+            />
+          ))}
 
         {selected ? (
           <InfoWindow
@@ -127,9 +119,8 @@ export default function Map() {
                 <span role="img" aria-label="wild pig">
                   🏘️
                 </span>{" "}
-               {selected.name}
+                {selected.name}
               </h2>
-             
             </div>
           </InfoWindow>
         ) : null}

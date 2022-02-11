@@ -6,4 +6,14 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
+  padding: 0.5vw;
+  box-sizing: border-box;
+}
+
+ol{
+  padding: 2vh 0;
+  list-style-position: inside;
+}
+li{
+  padding: 1vh 0;
 }
