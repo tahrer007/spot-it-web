@@ -14,7 +14,7 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-const options = { types: ["haifa"], componentRestrictions: { country: "il" } };
+//const options = { types: ["haifa"], componentRestrictions: { country: "il" } };
 
 export default function Search({ panTo }) {
   const center = { lat: 32.794241949530296,
