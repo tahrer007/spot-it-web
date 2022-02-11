@@ -7,6 +7,7 @@ import Help from "./pages/help/help";
 import About from "./pages/about/about";
 import ErrorPage from "./pages/errorPage/errorPage";
 import Login from "./pages/login/login";
+import RedNeighborhoods from "./pages/redneighborhoods/redNeighborhoods";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/Help" element={<Help />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Redneighborhoods" element={<RedNeighborhoods />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>

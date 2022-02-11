@@ -6,6 +6,7 @@ import "../../App.css";
 import "./home.css";
 import myApi from "../../api/api";
 
+
 function Home() {
   const [addingLocation, setAddingLocation] = useState(false);
   const [cancelMark, setCancelMark] = useState(false);
@@ -43,7 +44,6 @@ function Home() {
    
       myApi.post("/locations/addLocation", newMark).then(
         (response) => {
-          console.log(response.data);
           setSuccessfullyPosted(response.data) ;
           setNewMark({});
          setTimeout(() => {

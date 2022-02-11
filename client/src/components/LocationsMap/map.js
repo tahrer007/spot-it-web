@@ -71,8 +71,8 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
 
   const onMapClick = (e) => {
     const lat = e.latLng.lat();
-    const lng = e.latLng.lng();
-    console.log({ lat, lng });
+    const lng = e.latLng.lng(); 
+    
 
     if (!isInsideHaifa({ lat, lng })) {
       handelMapClick(false);

@@ -1,0 +1,27 @@
+.redNei{
+    display: flex;
+    box-sizing: border-box;
+    
+  }
+  
+  .homePageLeft{
+    height:100%;
+    width: 65%;
+    background-color: violet;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+   
+  
+  }
+  .homePageRight{
+    height: 100%;
+    width: 35%;
+    background-color: red;
+    margin:0;
+    padding:0.5vw;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
