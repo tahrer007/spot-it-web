@@ -75,7 +75,7 @@ function Home() {
   };
 
   return (
-    <div className="pagesContainer home">
+    <div className="pagesContainer home BackGround ">
       <div className="homePageLeft">
         <Map handelMapClick={handelMapClick} cancel={cancelMark} updateDbMarks={successfullyPosted} />
       </div>

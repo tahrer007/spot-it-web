@@ -11,25 +11,30 @@
   font-family: lion_king;
   src: url(./assets/fonts/lion_king/lion_king.ttf);
 }
+@font-face {
+  font-family: test1;
+  src: url(./assets/fonts/Akaya_Telivigala/AkayaTelivigala-Regular.ttf);
+}
+@font-face {
+  font-family: test2;
+  src: url(./assets/fonts/Shizuru/Shizuru-Regular.ttf);
+}
 .appContainer{
   color: #faebd7;
   height: 100%;
   width:100%;
-  background-color: aqua;
+  
   display: flex;
   flex-direction: column;
   position: relative;
   font-family: african;
-  letter-spacing:0.3vw;
-  
+  letter-spacing:0.3vw; 
 }
 .pagesContainer{
   width: 100vw;
   height:90vh;
   margin: 0;
   padding: 0;
-  background: url("./assets/images/44.jpg") no-repeat center center/cover;
-
 }
 
 /*to ask the user to use landscape*/

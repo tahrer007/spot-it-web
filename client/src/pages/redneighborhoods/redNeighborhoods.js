@@ -6,7 +6,7 @@ import Map from "../../components/redAreaMap/redMap";
 
 export default function redNeighborhoods() {
   return (
-    <div className="pagesContainer home">
+    <div className="pagesContainer home BackGround">
       <div className="homePageLeft">
         <Map />
       </div>

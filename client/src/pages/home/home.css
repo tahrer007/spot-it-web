@@ -1,7 +1,10 @@
 .home{
   display: flex;
-  box-sizing: border-box;
+  box-sizing: border-box;}
+
+.BackGround{
   background-image: linear-gradient(to right top, #6d512c, #8d5744, #a56067, #b06f91, #aa85bb, #9c98d6, #85aceb, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);}
+
 
 .homePageLeft{
   height:100%;
