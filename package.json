@@ -28,6 +28,7 @@
     "mongoose": "^6.2.0",
     "morgan": "^1.10.0",
     "react-google-places-autocomplete": "^3.3.2",
+    "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.0",
     "web-push": "^3.4.5"
   },
