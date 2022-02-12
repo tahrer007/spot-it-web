@@ -12,10 +12,10 @@ function About() {
 
           <h3> who am? </h3>
           <p>
-            my name is tahrer, I am a full stack developer who believes in
+            my name is Tahrer, I am a Full Stack Developer who believes in
             making the world a better place by technology.
           </p>
-          <h3> Where I’m From?</h3>
+          <h3> Where I am From?</h3>
           <p>
             I was born and raised in Jerusalem and currently reside in Haifa{" "}
           </p>
