@@ -1,10 +1,10 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import mapStyles from "./mapStyles";
 import "../../App.css";
 import "../../pages/home/home.css";
 import "./redMap.css";
 import redAreaArr from "./redArea";
-import { geocodeByPlaceId } from "react-google-places-autocomplete";
+
 import {
   GoogleMap,
   useLoadScript,
@@ -31,7 +31,7 @@ export default function Map() {
   const [markers, setMarkers] = useState(redAreaArr);
   const [selected, setSelected] = useState(null);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const getRedAreas = async () => {
       /*redAreaArr.forEach((element) => {
         geocodeByPlaceId(element.place_id)
@@ -48,10 +48,11 @@ export default function Map() {
             setMarkers((current) => [...current, obj]);
           })
           .catch((error) => console.error(error));
-      });*/
+      });
     };
     //getRedAreas();
   }, []);
+  */
 
   
 

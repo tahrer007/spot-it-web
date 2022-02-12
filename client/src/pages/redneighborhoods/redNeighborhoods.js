@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import React  from "react";
 import "../../App.css";
 import "./redNeighborhoods.css";
 import "../home/home.css";
