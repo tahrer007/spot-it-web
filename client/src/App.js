@@ -17,11 +17,13 @@ function App() {
       <Router>
            <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<About />} />
+          <Route path="/Locations" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/Help" element={<Help />} />
-          <Route path="/Login" element={<Login />} />
           <Route path="/Redneighborhoods" element={<RedNeighborhoods />} />
+          <Route path="/Login" element={<Login />} />
+         
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>

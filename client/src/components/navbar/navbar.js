@@ -1,17 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+//import { Redirect } from 'react-router-dom';
 
-export default class Navbar extends Component {
-  render() {
+export default  function Navbar () {
+  //const navigate = useNavigate();
+
+   const handleClick = ()=> {
+   console.log("route to about page")
+  }
+ 
     return (
       <header className="navbar">
         <div className="navbarLeft">
-          <div className="navbarLogo">
-            
+        <div className="navbarLogo" onClick={() =>  handleClick()  }>
           </div>
         </div>
-        <Link className="navbarLink navbarBtn" to="/">
+        <Link className="navbarLink navbarBtn" to="/Locations">
           Locations
         </Link>
         <Link className="navbarLink navbarBtn" to="/Redneighborhoods">
@@ -28,5 +33,5 @@ export default class Navbar extends Component {
   </Link>*/}
       </header>
     );
-  }
+  
 }
