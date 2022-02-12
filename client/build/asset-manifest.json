@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.189c66d2.css",
+    "main.js": "/static/js/main.3591ed6b.js",
+    "static/media/night2.jpg": "/static/media/night2.2c053a8838c98c9c10fa.jpg",
+    "static/media/AkayaTelivigala-Regular.ttf": "/static/media/AkayaTelivigala-Regular.58ce69c6f1c7d7ace49b.ttf",
+    "static/media/2.jpg": "/static/media/2.46d5f1028d443403f3c4.jpg",
+    "static/media/44.jpg": "/static/media/44.5a0ed8e75bbdcca6084b.jpg",
+    "static/media/Shizuru-Regular.ttf": "/static/media/Shizuru-Regular.4f140c9e559bc80a9bbd.ttf",
+    "static/media/global.jpg": "/static/media/global.3beaa41b88a3ed021f35.jpg",
+    "static/media/roads.jpg": "/static/media/roads.d5620ce81f13c1ed98c6.jpg",
+    "static/media/african.ttf": "/static/media/african.0ad4dd2cfcac64577fc2.ttf",
+    "static/media/location1.png": "/static/media/location1.73948584a92a3fc87a6f.png",
+    "static/media/rotate.png": "/static/media/rotate.10f06677599ebb077b6e.png",
+    "static/media/lion_king.ttf": "/static/media/lion_king.22f1846bd80ae1db7571.ttf",
+    "static/media/logo3.svg": "/static/media/logo3.bf2e66c5d215ac23d67d.svg",
+    "static/media/logo2.svg": "/static/media/logo2.ac95fba1a3ddc2f87b4a.svg",
+    "index.html": "/index.html",
+    "main.189c66d2.css.map": "/static/css/main.189c66d2.css.map",
+    "main.3591ed6b.js.map": "/static/js/main.3591ed6b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.189c66d2.css",
+    "static/js/main.3591ed6b.js"
+  ]
+}
