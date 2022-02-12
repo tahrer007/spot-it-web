@@ -19,6 +19,7 @@ the app shows all the locations of spotted boars in the last 48 hours. as well a
 
 ## From the App
 * desktop
-<img src=".\client\src\assets\images\readme\desktop1.jpg"> 
-<img src=".\client\src\assets\images\readme\desktop2.jpg"> 
-* mobile (only landscape )
+![desktop](/client/src/assets/images/readMe/desktop1.png "Optional Title")
+![desktop2](/client/src/assets/images/readMe/desktop2.png "Optional Title")
+* mobile (only landscape)
+![mobile](/client/src/assets/images/readMe/mobile.png "Optional Title")
