@@ -1,4 +1,4 @@
-# <img src=".\client\src\assets\images\readme.png" width="200"> 
+ 
 ![logo](/client/src/assets/images/readme.png "Optional Title")
 # SPOT IT
 
