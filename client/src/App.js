@@ -23,7 +23,6 @@ function App() {
           <Route path="/Help" element={<Help />} />
           <Route path="/Redneighborhoods" element={<RedNeighborhoods />} />
           <Route path="/Login" element={<Login />} />
-         
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
