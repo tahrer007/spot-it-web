@@ -7,7 +7,9 @@ export default class Navbar extends Component {
     return (
       <header className="navbar">
         <div className="navbarLeft">
-          <div className="navbarLogo"></div>
+          <div className="navbarLogo">
+            
+          </div>
         </div>
         <Link className="navbarLink navbarBtn" to="/">
           Homepage

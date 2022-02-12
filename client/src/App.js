@@ -11,7 +11,8 @@ import RedNeighborhoods from "./pages/redneighborhoods/redNeighborhoods";
 
 function App() {
   return (
-    <div  className="appContainer" >
+    <div  className="appContainer"  >
+      <div id="info"></div>
       
       <Router>
            <Navbar />

@@ -58,4 +58,17 @@ ol,ul {
 li {
   padding: 1vh 0;
 }
+@media (max-width:600px) {
+  /*.home{
+    flex-direction: column;
+  }
+  .homePageLeft{
+width: 100%;
+height: 60%;
+  }
 
+  .homePageRight{
+    width: 100%;
+height: 38%;
+  }*/
+}

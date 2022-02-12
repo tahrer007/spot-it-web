@@ -2,7 +2,7 @@
   position: absolute;
   min-width: 50%;
   top: 1vw;
-  left: 1vw;
+  left: 20%;
   z-index: 100;
 }
 .searchInput {

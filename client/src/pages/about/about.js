@@ -4,6 +4,9 @@ import "../../App.css" ;
 
  function About() {
 
-  return (<div className="pagesContainer"><h1>about me</h1></div>)
+  return (<div className="pagesContainer">
+              test
+
+  </div>)
 }
 export default About ;

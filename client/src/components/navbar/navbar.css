@@ -6,6 +6,8 @@
   background: rgb(46, 46, 46);
   width: 100vw;
   height: 7vh;
+  padding: 0.5em;
+  box-sizing: border-box;
 }
 .navbarLeft {
   display: flex;

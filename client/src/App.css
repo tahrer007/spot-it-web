@@ -40,12 +40,12 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url(/public/rotate.png);
+  background: url("./assets/images/rotate.png") no-repeat center center/cover;
 }
 /* only when orientation is in portrait mode */
-@media all and  (orientation: portrait) {
+@media  (orientation: portrait) {
   #info {
     display: block;
-    z-index: 100;
+    z-index: 1000;
   }
 }
