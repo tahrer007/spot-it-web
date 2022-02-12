@@ -5,7 +5,7 @@ import "./about.css";
 
 function About() {
   return (
-    <div className="pagesContainer home ">
+    <div className="pagesContainer home  ">
       <div className="homePageLeft aboutText">
         <div className=" textBox aboutMe">
           <h1>About me </h1>
@@ -36,19 +36,22 @@ function About() {
         </div>
 
         <div className=" textBox nextLevel">
-          <h1> next level  </h1>
+          <h1> next level </h1>
           <h3> short term targets? </h3>
           <p>
-          to send notifications to subscribers and provide help in emergency cases. (under development) 
+            to send notifications to subscribers and provide help in emergency
+            cases. (under development)
           </p>
           <h3> long term targets? </h3>
-          <p>
-          to work with the authorities and go global.
-          </p>
+          <p>to work with the authorities and go global.</p>
         </div>
       </div>
 
-      <div className="homePageRight"></div>
+      <div className="aboutRight"> 
+      <div className="imgBox box-1"></div>
+      <div className="imgBox box-2"></div>
+      <div className="imgBox box-3"></div>
+      </div>
     </div>
   );
 }

@@ -5,21 +5,45 @@
   overflow: hidden;
   background: url("../../assets/images/2.jpg") no-repeat center center/cover;
 }
+.aboutRight{
+height: 100%;
+  width: 35%;
+  background: rgba(75, 75, 75, 0.418);
+
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  overflow: hidden;
+
+}
+
 .textBox {
-  background: rgba(17, 24, 69, 0.651);
-  box-sizing: border-box;
-  overflow: visible;
-  box-shadow: 0 20px 50px rgb(23, 32, 90);
-  border: 2px solid rgb(247, 224, 193);
-  width: 98%;
-  height: 95%;
-  align-self: center;
-  justify-self: center;
-  padding: 0.4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  row-gap: 3px;
+    background: rgba(17, 24, 69, 0.651);
+    box-sizing: border-box;
+    overflow: visible;
+    box-shadow: 0 20px 50px rgb(23, 32, 90);
+    border: 2px solid rgb(247, 224, 193);
+    width: 98%;
+    height: 95%;
+    align-self: center;
+    justify-self: center;
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    row-gap: 3px;
+}
+.imgBox{
+    background: rgba(17, 24, 69, 0.651);
+    box-sizing: border-box;
+    overflow: visible;
+    box-shadow: 0 20px 50px rgb(23, 32, 90);
+    border: 2px solid rgb(247, 224, 193);
+    width: 50%;
+    height: 95%;
+    align-self: center;
+    justify-self: center;
+    
+    
 }
 h1 {
   text-align: center;
@@ -35,3 +59,15 @@ p {
   color: #e9e1a7;
   font-family: test1;
 }
+.box-1{
+    background: url("../../assets/images/night2.jpg") no-repeat center center/cover;
+}
+.box-2{
+    background: url("../../assets/images/roads.jpg") no-repeat center center/cover;
+}
+
+.box-3{
+    background: url("../../assets/images/global.jpg") no-repeat center center/cover;
+}
+
+
