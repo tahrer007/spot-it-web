@@ -15,11 +15,11 @@ export default function redNeighborhoods() {
         <div className="homeText">
           <h3>
             these neighborhoods are the most affected by boars according to
-            municipality website{" "}
+            municipality of Haifa{" "}
           </h3>
           <div className="extrainfo">
             if you have more questions about the boars or about the services that you
-            can receive from the ministry of haifa you can visit this <a href="https://www.haifa.muni.il/operation/boars/"> link </a>
+            can receive from the municipality of haifa you can visit their <a href="https://www.haifa.muni.il/operation/boars/"> website  </a>
           </div>
         </div>
       </div>

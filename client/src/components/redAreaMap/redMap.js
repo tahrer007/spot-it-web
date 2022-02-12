@@ -14,7 +14,7 @@ import {
 
 const mapContainerStyle = {
   width: "100%",
-  height: "90vh",
+  height: "85vh",
 };
 const libraries = ["places"];
 const options = {

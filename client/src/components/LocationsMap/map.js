@@ -19,7 +19,7 @@ import { formatRelative } from "date-fns";
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "100%",
-  height: "90vh",
+  height: "85vh",
 };
 const options = {
   styles: mapStyles,
