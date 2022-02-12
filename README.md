@@ -1,4 +1,5 @@
 # <img src=".\client\src\assets\images\readme.png" width="200"> 
+![logo](/client/src/assets/images/readme.png "Optional Title")
 # SPOT IT
 
 ## About me
@@ -43,3 +44,4 @@ the app shows all the locations of spotted boars in the last 48 hours. as well a
 
 ## long term targets?
 to collaborate with the authorities and go global.
+![global](/client/src/assets/images/global.jpg "Optional Title")
