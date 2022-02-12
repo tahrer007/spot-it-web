@@ -4,6 +4,7 @@
   top: 1vw;
   left: 20%;
   z-index: 100;
+
 }
 .searchInput {
   width: 100%;
@@ -14,10 +15,14 @@
   border-radius: 60px;
   border-color: rgba(129, 96, 221);
   padding: 10px;
+ 
 }
 .ComboboxOption {
   border-radius: 60px;
   padding: 10px;
+  font-family: test1;
+  font-size: 2rem;
+  
 }
 .ComboboxPopover {
 }

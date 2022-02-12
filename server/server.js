@@ -23,9 +23,9 @@ app.use(
 app.use("/users", usersRouter);
 app.use("/locations", locationsRouter);
 
-const publicVapidKey =
+/*const publicVapidKey =
   "BBgUIHi4LfvctkcccjVg05kEzrY7o9tdsYwOi6feFCPdBfau8XvgF0OhhIxdUahH8YQslCkBepXUAxKoJatyiuM";
-const privateVapidKey = "73QfPzJ-24R4LXHWq5x1Hnr8FeMySDov1DujsEmlErc";
+const privateVapidKey = "73QfPzJ-24R4LXHWq5x1Hnr8FeMySDov1DujsEmlErc";*/
 
 
 
@@ -44,6 +44,8 @@ app.get("/*", (req, res) => {
 app.all("*", (req, res) => {
   res.sendFile(path.resolve(publicPath, "index.html"));
 });*/
+app.use(express.static('public'))
+
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.listen(PORT, () => {
