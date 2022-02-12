@@ -18,5 +18,5 @@ the app shows all the locations of spotted boars in the last 48 hours. as well a
 [spot it](https://www.youtube.com/)
 
 ## From the App
-. desktop
-. mobile (only landscape )
+* desktop
+* mobile (only landscape )
