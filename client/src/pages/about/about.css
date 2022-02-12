@@ -1,12 +1,9 @@
-
 .aboutText {
+    box-sizing: border-box;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
-  overflow: visible;
-
-
-  
-
+  overflow: hidden;
+  background: url("../../assets/images/2.jpg") no-repeat center center/cover;
 }
 .textBox {
   background: rgba(17, 24, 69, 0.651);
@@ -14,29 +11,27 @@
   overflow: visible;
   box-shadow: 0 20px 50px rgb(23, 32, 90);
   border: 2px solid rgb(247, 224, 193);
-  width: 95%;
-  height: 90%;
+  width: 98%;
+  height: 95%;
   align-self: center;
   justify-self: center;
-  padding: 1rem;
+  padding: 0.4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  row-gap: 5px;
- 
+  row-gap: 3px;
 }
-h1{
-    text-align: center;  
-    font-weight:normal ;
-    font-size:4vmin;
+h1 {
+  text-align: center;
+  font-weight: normal;
+  font-size: 3vmin;
 }
-h3{
-    font-size:3vmin;
-    font-weight:normal
+h3 {
+  font-size: 1.5vmin;
+  font-weight: normal;
 }
-p{
-    font-size:3vmin;
-    color: black;
-    font-family: test1;
-    
+p {
+  font-size: 3vmin;
+  color: #e9e1a7;
+  font-family: test1;
 }
