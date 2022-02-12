@@ -43,7 +43,7 @@ function About() {
             cases. (under development)
           </p>
           <h3> long term targets? </h3>
-          <p>to work with the authorities and go global.</p>
+          <p>to collaborate with the authorities and go global.</p>
         </div>
       </div>
 

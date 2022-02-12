@@ -18,8 +18,28 @@ the app shows all the locations of spotted boars in the last 48 hours. as well a
 [spot it](https://www.youtube.com/)
 
 ## From the App
-* desktop
+* ### desktop
 ![desktop](/client/src/assets/images/readMe/desktop1.png "Optional Title")
 ![desktop2](/client/src/assets/images/readMe/desktop2.png "Optional Title")
-* mobile (only landscape)
+*  ### mobile (only landscape)
 ![mobile](/client/src/assets/images/readMe/mobile.png "Optional Title")
+
+## technology 
+### client 
+* @reach/combobox
+* react-google-places-autocomplete
+* react-google-maps/api
+* axios 
+### server side 
+* xpress 
+* cors
+### dataBase 
+* MongoDB Atlas
+
+
+## Todos 
+* send notifications to subscribers 
+* provide help in emergency cases (chat app).
+
+## long term targets?
+to collaborate with the authorities and go global.
