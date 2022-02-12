@@ -11,7 +11,7 @@ const locationsRouter = require("./routers/locationsRouter");
 const usersRouter = require("./routers/usersRouter");
 
 const PORT = process.env.PORT || 5000;
-const publicPath = path.join(__dirname, "../..", "client/build");
+const publicPath = path.join(__dirname, "..", "client/build");
 
 app.use(express.static(publicPath));
 app.use(express.urlencoded({ extended: true }));
@@ -25,7 +25,6 @@ app.all("*", (req, res) => {
   res.sendFile(path.resolve(publicPath, "index.html"));
 });
 
-const publicPath = path.join(__dirname, "..", "client/build");
 app.listen(PORT, () => {
   console.log(`Server running on Port: ${PORT}`);
 });
