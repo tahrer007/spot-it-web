@@ -1,12 +1,38 @@
-.newLocationBox{
-    background-color: green;
-    width: 100%;
-  height: 100%;
+.form{
+  line-height: 4vh;
+}
+h5{
+  padding-top: 1em;
+}
+label{
+  font-size: 1em;
+  letter-spacing: normal;
+  padding-right: 1em;
+}
+.extraDetails{
+  width: 100%;
+}
 
-    display:flex ;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    
-   
+.buttonsBox{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 100%;
+  height: max-content;
+  
+ 
+}
+.btn{
+  background: transparent;
+  color :antiquewhite ;
+  background: rgb(46, 46, 46 ,0.5);
+  cursor: pointer;
+  border: 1px  antiquewhite solid;
+  font-family: african;
+  font-size: 1.5em;
+  padding: 1vw;
+}
+
+.btn:hover{
+  background: rgba(75, 75, 75, 0.8);
 }

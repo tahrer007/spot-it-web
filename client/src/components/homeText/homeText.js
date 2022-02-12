@@ -1,6 +1,5 @@
 import React from "react";
-import "./homeText.css";
-
+import "../../pages/home/home.css"
 export default function HomeText() {
   return (
     <div className="homeText">

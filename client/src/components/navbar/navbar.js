@@ -13,7 +13,7 @@ export default class Navbar extends Component {
           Homepage
         </Link>
         <Link className="navbarLink navbarBtn" to="/Redneighborhoods">
-          Red neighborhoods
+          Red areas
         </Link>
         <Link className="navbarLink navbarBtn" to="/about">
           About
