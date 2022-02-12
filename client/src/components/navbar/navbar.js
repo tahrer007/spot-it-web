@@ -25,10 +25,10 @@ export default  function Navbar () {
         <Link className="navbarLink navbarBtn" to="/about">
           About
         </Link>
-        <Link className="navbarLink navbarBtn" to="/help">
+       {/* <Link className="navbarLink navbarBtn" to="/help">
           Help
         </Link>
-        {/*<Link className="navbarLink navbarBtn" to="/login">
+        <Link className="navbarLink navbarBtn" to="/login">
           Log in
   </Link>*/}
       </header>
