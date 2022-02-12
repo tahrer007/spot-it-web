@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter , Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/navbar/navbar"
 import Home from "./pages/home/home";
@@ -14,7 +14,7 @@ function App() {
     <div  className="appContainer"  >
       <div id="info"></div>
       
-      <Router>
+      <BrowserRouter>
            <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -26,7 +26,7 @@ function App() {
          
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
       </div>
     
   );
