@@ -44,3 +44,11 @@
 .navbarBtn:hover {
   background: rgba(75, 75, 75, 0.418);
 }
+
+
+@media (max-width:700px) {
+  .navbarBtn {
+    font-size: 10.5px;
+  }
+  
+}

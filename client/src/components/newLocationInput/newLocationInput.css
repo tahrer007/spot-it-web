@@ -29,8 +29,8 @@ label{
   cursor: pointer;
   border: 1px  antiquewhite solid;
   font-family: african;
-  font-size: 1.5em;
-  padding: 1vw;
+  font-size: 2vmin;
+  padding: 2vmin;
 }
 
 .btn:hover{
