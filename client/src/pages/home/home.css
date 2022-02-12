@@ -51,7 +51,7 @@
   padding: 20px;
 }
 
-ol {
+ol,ul {
   padding: 2vh 0;
   list-style-position: inside;
 }

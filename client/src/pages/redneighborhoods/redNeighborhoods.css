@@ -3,5 +3,17 @@
     box-sizing: border-box;
     
   }
-  
+
+  h3{
+    font-size: 3vmin;
+  }
+
+  .extrainfo{
+    font-size: 3vmin;
+    margin-top: 3vmin;
+  }
+  .extrainfo a{
+    color :yellow;
+    text-decoration: none;
+  }
   
