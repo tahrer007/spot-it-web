@@ -16,7 +16,7 @@ The wild pigs of Haifa have invaded almost all the city. as a stranger, I didn't
 the app shows all the locations of spotted boars in the last 48 hours. as well as the most affected neighborhoods.
 
 ## Live Link 
-[spot it](https://www.youtube.com/)
+[spot it](https://spot-it-2022.herokuapp.com/)
 
 ## From the App
 * ### desktop
