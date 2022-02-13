@@ -20,7 +20,7 @@ export default  function Navbar () {
           Locations
         </Link>
         <Link className="navbarLink navbarBtn" to="/Redneighborhoods">
-         Neighborhoods
+         Red-Neighborhoods
         </Link>
         <Link className="navbarLink navbarBtn" to="/about">
           About
