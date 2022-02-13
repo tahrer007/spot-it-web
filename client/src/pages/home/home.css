@@ -52,14 +52,23 @@
   box-shadow: 0 20px 50px rgb(23, 32, 90);
   border: 2px solid rgb(247, 224, 193);
   padding: 20px;
+  
 }
 
-ol,ul {
+.homeText h5{
+
+  font-weight: normal;
+}
+
+
+  ol,.homeText ul {
   padding: 2vh 0;
   list-style-position: inside;
 }
 li {
   padding: 1vh 0;
+  font-size: 1.5vw;
+
 }
 @media (max-width:600px) {
   /*.home{

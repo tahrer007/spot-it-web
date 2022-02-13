@@ -1,16 +1,22 @@
 .form{
   line-height: 4vh;
+  font-size: 2.5vmin;
 }
 h5{
   padding-top: 1em;
+  font-weight: normal;
+  
 }
 label{
   font-size: 1em;
   letter-spacing: normal;
   padding-right: 1em;
 }
+
 .extraDetails{
   width: 100%;
+  font-family: test1;
+ 
 }
 
 .buttonsBox{
