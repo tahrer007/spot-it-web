@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.4ec68057.css",
+    "main.css": "/static/css/main.2de3338f.css",
     "main.js": "/static/js/main.fbfab31e.js",
     "static/media/night2.jpg": "/static/media/night2.2c053a8838c98c9c10fa.jpg",
     "static/media/AkayaTelivigala-Regular.ttf": "/static/media/AkayaTelivigala-Regular.58ce69c6f1c7d7ace49b.ttf",
@@ -16,11 +16,11 @@
     "static/media/logo3.svg": "/static/media/logo3.bf2e66c5d215ac23d67d.svg",
     "static/media/logo2.svg": "/static/media/logo2.ac95fba1a3ddc2f87b4a.svg",
     "index.html": "/index.html",
-    "main.4ec68057.css.map": "/static/css/main.4ec68057.css.map",
+    "main.2de3338f.css.map": "/static/css/main.2de3338f.css.map",
     "main.fbfab31e.js.map": "/static/js/main.fbfab31e.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ec68057.css",
+    "static/css/main.2de3338f.css",
     "static/js/main.fbfab31e.js"
   ]
 }
