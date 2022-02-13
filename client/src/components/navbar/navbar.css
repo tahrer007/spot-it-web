@@ -33,6 +33,7 @@
   margin: 0 1rem;
   text-decoration: none;
   cursor: pointer;
+  font-size: 1vw;
 }
 
 .navbarLink:hover {
