@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "nodemon server/server.js",
     "client": "cd client && cd src && npm start",
-    "start": "concurrently \"npm run dev\" \"npm run client\"",
-   
+    "start-local": "concurrently \"npm run dev\" \"npm run client\"",
+    "start": "node ./server/server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
