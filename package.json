@@ -8,9 +8,7 @@
 
     "test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node ./server/server.js",
-		"start-server-dev": "nodemon ./server/server.js",
-		"start-react-dev": "npm run start --prefix client",
-		"build-react": "npm run build --prefix client",
+		
 		"heroku-postbuild": "npm install --prefix client && npm run build-react"
   },
   "repository": {
