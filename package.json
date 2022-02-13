@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-   /* "dev": "nodemon server/server.js",
-    "client": "cd client && cd src && npm start",
-    "start-local": "concurrently \"npm run dev\" \"npm run client\"",
-    "start": "node ./server/server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"*/
+   
 
     "test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node ./server/server.js",
