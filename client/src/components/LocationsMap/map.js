@@ -31,7 +31,7 @@ const center = {
   lng: 34.98972566204482,
 };
 
-export default function Map({ handelMapClick, updateDbMarks, cancel }) {
+export default function Map({ handelMapClick, updateDbMarks, cancel, APIKey }) {
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
   const [newMark, setNewMark] = useState({});
@@ -45,6 +45,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
     const getALLlocations = async () => {
       try {
         const { data } = await myApi.get("locations/allLocations");
+
         intialMarks(data);
       } catch (error) {
         console.log(error);
@@ -65,7 +66,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
   }, [cancel]);
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
+    googleMapsApiKey: APIKey,
     libraries,
   });
 

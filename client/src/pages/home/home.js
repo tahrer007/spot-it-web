@@ -6,8 +6,8 @@ import "../../App.css";
 import "./home.css";
 import myApi from "../../api/api";
 
-
 function Home() {
+  const [APIKey, setApiKey] = useState(null);
   const [addingLocation, setAddingLocation] = useState(false);
   const [cancelMark, setCancelMark] = useState(false);
   const [successfullyPosted, setSuccessfullyPosted] = useState(null);
@@ -19,6 +19,22 @@ function Home() {
     number: null,
   });
 
+  
+  useEffect (()=>{
+    const getGoogleApiKey = async () => {
+      try {
+         const key = await myApi.get("keys/googleApiKey");
+        console.log("here!!")
+        setApiKey(key.data);
+        
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getGoogleApiKey() ; 
+  },[])
+    
+
   const handelForm = (howMany, details) => {
     if (!howMany) {
       setCancelMark(true);
@@ -26,7 +42,6 @@ function Home() {
         setCancelMark(false);
       }, 500);
 
-      
       console.log("cancel");
     } else {
       setNewMark((prevState) => ({
@@ -39,16 +54,19 @@ function Home() {
     setAddingLocation(false);
   };
 
+
+  
+
+
   useEffect(() => {
     const addLocation = async () => {
-   
       myApi.post("/locations/newLocation", newMark).then(
         (response) => {
-          setSuccessfullyPosted(response.data) ;
+          setSuccessfullyPosted(response.data);
           setNewMark({});
-         setTimeout(() => {
-          setSuccessfullyPosted(null);
-        }, 500);
+          setTimeout(() => {
+            setSuccessfullyPosted(null);
+          }, 500);
         },
         (error) => {
           console.log(error.message);
@@ -70,19 +88,27 @@ function Home() {
         lng: newLocationData.lng,
         time: newLocationData.time,
       }));
-      console.log(newLocationData);
+      
     }
   };
 
   return (
     <div className="pagesContainer home BackGround ">
       <div className="homePageLeft">
-        <Map handelMapClick={handelMapClick} cancel={cancelMark} updateDbMarks={successfullyPosted} />
+       { (APIKey)?  
+        <Map
+          handelMapClick={handelMapClick}
+          cancel={cancelMark}
+          updateDbMarks={successfullyPosted}
+          APIKey={APIKey}
+        /> :null }
+
+       
       </div>
 
       <div className="homePageRight">
         {addingLocation ? (
-          <NewLocationInput handelForm={handelForm} />
+          <NewLocationInput handelForm={handelForm}  />
         ) : (
           <HomeText />
         )}
