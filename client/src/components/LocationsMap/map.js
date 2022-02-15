@@ -44,7 +44,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
   useEffect(() => {
     const getALLlocations = async () => {
       try {
-        const { data } = await myApi.get("locations/getLocations");
+        const { data } = await myApi.get("locations/allLocations");
         intialMarks(data);
       } catch (error) {
         console.log(error);
@@ -71,8 +71,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
 
   const onMapClick = (e) => {
     const lat = e.latLng.lat();
-    const lng = e.latLng.lng(); 
-    
+    const lng = e.latLng.lng();
 
     if (!isInsideHaifa({ lat, lng })) {
       handelMapClick(false);
@@ -157,7 +156,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel }) {
 
         {selected ? (
           <InfoWindow
-          className="InfoWindow"
+            className="InfoWindow"
             position={{ lat: selected.lat, lng: selected.lng }}
             onCloseClick={() => {
               setSelected(null);

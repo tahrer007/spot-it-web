@@ -18,7 +18,8 @@ app.use(cors());
 app.use("/users", usersRouter);
 app.use("/locations", locationsRouter);
 
-
+const GOOGLE_API =process.env.GOOGLE_MAPS_API_KEY ; 
+console.log( "test",GOOGLE_API);
 
 app.use("*", (req, res) => {
 	res.send("this route is not exist");

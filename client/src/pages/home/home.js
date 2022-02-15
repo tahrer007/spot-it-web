@@ -42,7 +42,7 @@ function Home() {
   useEffect(() => {
     const addLocation = async () => {
    
-      myApi.post("/locations/addLocation", newMark).then(
+      myApi.post("/locations/newLocation", newMark).then(
         (response) => {
           setSuccessfullyPosted(response.data) ;
           setNewMark({});
