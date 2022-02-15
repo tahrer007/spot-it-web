@@ -12,7 +12,7 @@ export default function HomeText() {
         </ol>
       </div>
 
-      <h3> Thats it . we are posted , thanks to you </h3>
+      <h3> Thats it . we are posted , thanks to you 😉 </h3>
     </div>
   );
 }

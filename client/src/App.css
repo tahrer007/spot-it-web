@@ -27,7 +27,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  font-family: african;
+  font-family: test1;
+  /*font-family: african;*/
   letter-spacing:0.3vw; 
 }
 .pagesContainer{
