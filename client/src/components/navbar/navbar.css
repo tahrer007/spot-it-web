@@ -2,7 +2,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  align-items: center;
+ 
   background: #2e2e2e;
   width: 100vw;
   height: 10vh;
@@ -16,6 +16,9 @@
   height: 100%;
   width: 15%;
   box-sizing: border-box;
+}
+.navbarRight{
+  margin-left: 5vw;
 }
 
 .navbarLogo {

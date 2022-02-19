@@ -12,15 +12,18 @@ export default function Navbar() {
       <div className="navbarLeft">
         <div className="navbarLogo" onClick={() => handleClick()}></div>
       </div>
-      <Link className="navbarLink navbarBtn" to="/Locations">
-        Locations
-      </Link>
-      <Link className="navbarLink navbarBtn" to="/Redneighborhoods">
-        Red-Neighborhoods
-      </Link>
-      <Link className="navbarLink navbarBtn" to="/about">
-        About
-      </Link>
+      <div className="navbarRight">
+        <Link className="navbarLink navbarBtn" to="/Locations">
+          Locations
+        </Link>
+        <Link className="navbarLink navbarBtn" to="/Redneighborhoods">
+          Red-Neighborhoods
+        </Link>
+        <Link className="navbarLink navbarBtn" to="/about">
+          About
+        </Link>
+      </div>
+
       {/* <Link className="navbarLink navbarBtn" to="/help">
           Help
         </Link>
