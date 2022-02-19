@@ -8,7 +8,7 @@ export default function HomeText() {
         <ol>
           <li>Click where to put the mark</li>
           <li>Fill few details </li>
-          <li>Click send </li>
+          <li>Click submit </li>
         </ol>
       </div>
 
