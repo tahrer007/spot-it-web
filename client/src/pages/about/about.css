@@ -47,17 +47,18 @@ height: 100%;
 }
 .textBox h1 {
   text-align: center;
-  font-weight: normal;
-  font-size: 3vmin;
+
+ 
 }
 .textBox h3 {
-  font-size: 2vmin;
+  font-size: 3.5vmin;
   font-weight: normal;
 }
 .textBox p {
-  font-size: 3.5vmin;
+  font-size: 3vmin;
   color: #e9e1a7;
   font-family: test1;
+ 
 }
 .box-1{
     background: url("../../assets/images/night2.jpg") no-repeat center center/cover;
