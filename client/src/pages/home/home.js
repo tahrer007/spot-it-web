@@ -19,21 +19,18 @@ function Home() {
     number: null,
   });
 
-  
-  useEffect (()=>{
+  useEffect(() => {
     const getGoogleApiKey = async () => {
       try {
-         const key = await myApi.get("keys/googleApiKey");
-        console.log("here!!")
+        const key = await myApi.get("keys/googleApiKey");
+        console.log("here!!");
         setApiKey(key.data);
-        
       } catch (error) {
         console.log(error);
       }
     };
-    getGoogleApiKey() ; 
-  },[])
-    
+    getGoogleApiKey();
+  }, []);
 
   const handelForm = (howMany, details) => {
     if (!howMany) {
@@ -41,8 +38,6 @@ function Home() {
       setTimeout(() => {
         setCancelMark(false);
       }, 500);
-
-      console.log("cancel");
     } else {
       setNewMark((prevState) => ({
         ...prevState,
@@ -53,10 +48,6 @@ function Home() {
 
     setAddingLocation(false);
   };
-
-
-  
-
 
   useEffect(() => {
     const addLocation = async () => {
@@ -88,27 +79,25 @@ function Home() {
         lng: newLocationData.lng,
         time: newLocationData.time,
       }));
-      
     }
   };
 
   return (
     <div className="pagesContainer home BackGround ">
       <div className="homePageLeft">
-       { (APIKey)?  
-        <Map
-          handelMapClick={handelMapClick}
-          cancel={cancelMark}
-          updateDbMarks={successfullyPosted}
-          APIKey={APIKey}
-        /> :null }
-
-       
+        {APIKey ? (
+          <Map
+            handelMapClick={handelMapClick}
+            cancel={cancelMark}
+            updateDbMarks={successfullyPosted}
+            APIKey={APIKey}
+          />
+        ) : null}
       </div>
 
       <div className="homePageRight">
         {addingLocation ? (
-          <NewLocationInput handelForm={handelForm}  />
+          <NewLocationInput handelForm={handelForm} />
         ) : (
           <HomeText />
         )}
