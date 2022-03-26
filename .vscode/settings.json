@@ -3,5 +3,7 @@
         "activityBar.background": "#590645",
         "titleBar.activeBackground": "#7C0860",
         "titleBar.activeForeground": "#FFFBFE"
-    }
+    },
+    "scm.alwaysShowActions": true,
+    "window.zoomLevel": 2
 }
