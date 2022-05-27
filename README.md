@@ -27,6 +27,9 @@ the app shows all the locations of spotted boars in the last 48 hours. as well a
 
 ## technology 
 ### client 
+*React 
+*CSS3
+*JavaScript
 * @reach/combobox
 * react-google-places-autocomplete
 * react-google-maps/api
