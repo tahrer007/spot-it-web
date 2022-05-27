@@ -10,7 +10,7 @@ I was born and raised in Jerusalem and currently reside in Haifa
 
 ## About the App
 ### about the idea
-The wild pigs of Haifa have invaded almost all the city. as a stranger, I didn't know where I can be without meeting them. I am asking myself all the time, if I could know which street they visit frequently.
+The wild pigs of Haifa have invaded almost all the city. as a stranger, I didn't know where I can be without meeting them. I am asked myself all the time, if I could know which streets they visit frequently.
 
 ### how it is work ?
 the app shows all the locations of spotted boars in the last 48 hours. as well as the most affected neighborhoods.
