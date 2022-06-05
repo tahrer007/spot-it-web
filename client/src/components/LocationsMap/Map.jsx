@@ -16,9 +16,12 @@ import {
   Polygon,
 } from "@react-google-maps/api";
 import { formatRelative } from "date-fns";
-//import io from "socket.io-client";
+import {io} from "socket.io-client";
 import socketIOClient from "socket.io-client";
-///const ENDPOINT = "http://127.0.0.1:5000/socket";
+//const ENDPOINT = "http://127.0.0.1:5000/api/socket";
+
+
+
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -59,11 +62,13 @@ export default function Map({ handelMapClick, updateDbMarks, cancel, APIKey }) {
   }, []);
   useEffect(() => {
     //console.log(myApi)
-   /* const socket = socketIOClient("http://localhost:5000/socket");
+    //const socket = io(`https://spot-it-server.herokuapp.com/socket`);
+    const socket = io(`https://spot-it-server.herokuapp.com/socket`)
+  
     socket.on("newLocation", (newMarker) => {
       console.log(newMarker);
       setMarkers((prevState )=>[...prevState ,newMarker]);
-    });*/
+    });
   }, []);
 
   useEffect(()=>{

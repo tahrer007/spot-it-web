@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://spot-it-server.herokuapp.com",
   "dependencies": {
     "@reach/combobox": "^0.16.5",
     "@react-google-maps/api": "^2.7.0",
