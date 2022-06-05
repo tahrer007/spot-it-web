@@ -1,7 +1,7 @@
 const user = require("../dataBase/models/users");
 const { loadAllUsers } = require("../utils/usersUtiles");
 
-const getUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
   try {
     const allusers = await loadAllUsers();
     res.status(200).json(allusers);
@@ -12,9 +12,9 @@ const getUsers = async (req, res) => {
 
 const addUser = async (req, res) => {
   const newUser = new user({
-    lat: req.body.lat,
-    lng: req.body.lng,
-    name: req.body.name,
+   userName: req.body.userName,
+    email: req.body.email,
+    password: req.body.password,
   });
 
   try {
@@ -26,6 +26,6 @@ const addUser = async (req, res) => {
 };
 
 module.exports = {
-  getUsers,
+  getAllUsers,
   addUser,
 };

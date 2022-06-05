@@ -1,30 +1,48 @@
-require("dotenv").config();
-require("./dataBase/mongoose");
-const path = require("path");
-const bodyParser = require("body-parser");
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const logger = require("morgan");
-const locationsRouter = require("./routers/locationsRouter");
-const usersRouter = require("./routers/usersRouter");
-const keysRouter = require("./routers/keysRouter");
-const publicPath = path.join(__dirname, "../client/build");
-const PORT = process.env.PORT || 5000;
-app.use(express.static(publicPath));
-app.use(express.urlencoded({ extended: true }));
+const express = require("./config/express");
+mongoose = require("mongoose");
+//require("./dataBase/mongoose");
+// Use env port or default
+const port = process.env.PORT || 5000;
 
-app.use(express.json());
-app.use(cors());
-app.use("/users", usersRouter);
-app.use("/locations", locationsRouter);
-app.use("/keys", keysRouter);
+//establish socket.io connection
+const app = express.init();
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
 
-app.use("*", (req, res) => {
-  res.send("this route is not exist");
+io.of("/api/socket").on("connection", (socket) => {
+  console.log("socket.io: User connected: ", socket.id);
+
+  socket.on("disconnect", () => {
+    console.log("socket.io: User disconnected: ", socket.id);
+  });
 });
 
-app.listen(PORT, (error) => {
-  if (error) return console.log(error);
-  console.log(`Server running on Port: ${PORT}`);
+//start the server
+server.listen(port, () => console.log(`Server now running on port ${port}!`));
+
+//connect to db
+const DB_USERNAME = process.env.DB_USERNAME;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+const DB_URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.auigb.mongodb.net/WildAnimalsTracker?retryWrites=true&w=majority`;
+mongoose.connect(DB_URL, {
+  useNewUrlParser: true,
 });
+
+const connection = mongoose.connection;
+
+connection.once("open", () => {
+  console.log("MongoDB database connected");
+  const thoughtChangeStream = connection.collection("locations").watch();
+  console.log("Setting change streams");
+  thoughtChangeStream.on("change", (change) => {
+    switch (change.operationType) {
+      case "insert":
+
+        console.log("zzzz Server zzzzzzz" , change.fullDocument);
+        io.of("/socket").emit("newLocation", change.fullDocument);
+        break;
+    }
+  });
+});
+
+connection.on("error", (error) => console.log("Error: " + error));
