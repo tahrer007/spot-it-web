@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Map from "../../components/LocationsMap/Map";
 import NewLocationInput from "../../components/newLocationInput/NewLocationInput";
 import HomeText from "../../components/homeText/HomeText";
-import { getGoogleApiKey } from "../../services/locations";
+import { getGoogleApiKey, postLocation } from "../../services/locations";
 
 function Home() {
   const [addingLocation, setAddingLocation] = useState(false);
@@ -25,67 +25,52 @@ function Home() {
     setApiKey(key);
   }, []);
 
+  useEffect(() => {
+    const updateDb = async () => {
+      const response = await postLocation(newMark);
+      console.log(response);
+    };
+
+    if (!newMark.number) return;
+    updateDb();
+  }, [newMark]);
+
   const handelForm = (howMany, details) => {
     if (!howMany) {
-      setCancelMark(true);
-      setTimeout(() => {
-        setCancelMark(false);
-      }, 500);
+      //setCancelMark(true);
     } else {
+      console.log(howMany, details);
       setNewMark((prevState) => ({
         ...prevState,
         number: howMany,
         comment: details,
       }));
     }
-
     setAddingLocation(false);
   };
 
-  /*useEffect(() => {
-    const addLocation = async () => {
-      myApi.post("/locations/newLocation", newMark).then(
-        (response) => {
-          setSuccessfullyPosted(response.data);
-          setNewMark({});
-          setTimeout(() => {
-            setSuccessfullyPosted(null);
-          }, 500);
-        },
-        (error) => {
-          console.log(error.message);
-        }
-      );
-    };
-
-    if (!newMark.number) return;
-    addLocation(newMark);
-  }, [newMark]);*/
-
   const handelMapClick = (newLocationData) => {
-    if (!newLocationData) {
-    } else {
-      setAddingLocation(true);
-      setNewMark((prevState) => ({
-        ...prevState,
-        lat: newLocationData.lat,
-        lng: newLocationData.lng,
-        time: newLocationData.time,
-      }));
-    }
+    setAddingLocation(true);
+    setNewMark((prevState) => ({
+      ...prevState,
+      lat: newLocationData.lat,
+      lng: newLocationData.lng,
+      time: newLocationData.time,
+    }));
   };
 
   return (
     <div className="pagesContainer home BackGround ">
       <div className="homePageLeft">
-        {ApiKey &&
-        <Map
-          handelMapClick={handelMapClick}
-          cancel={cancelMark}
-          updateDbMarks={successfullyPosted}
-          ApiKey={ApiKey}
-        />}
-         </div>
+        {ApiKey && (
+          <Map
+            handelMapClick={handelMapClick}
+            cancel={cancelMark}
+            updateDbMarks={successfullyPosted}
+            ApiKey={ApiKey}
+          />
+        )}
+      </div>
 
       <div className="homePageRight">
         {addingLocation ? (

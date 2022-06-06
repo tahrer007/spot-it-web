@@ -58,9 +58,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel, ApiKey }) {
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
 
-    if (!isInsideHaifa({ lat, lng })) {
-      handelMapClick(false);
-    } else {
+    if (isInsideHaifa({ lat, lng })) {
       const newLocation = {
         lat,
         lng,
@@ -68,6 +66,8 @@ export default function Map({ handelMapClick, updateDbMarks, cancel, ApiKey }) {
       };
       setLocalMark({ status: true, details: newLocation });
       handelMapClick(newLocation);
+    } else {
+      //error message - outside the polygen!!
     }
   };
   const mapRef = useRef();

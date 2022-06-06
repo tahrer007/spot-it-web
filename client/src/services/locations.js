@@ -15,11 +15,11 @@ const getAllLocations = async () => {
 const postLocation = async (newLocation) => {
   myApi.post("/locations/newLocation", newLocation).then(
     (response) => {
-      return true;
+      return response;
     },
     (error) => {
       console.log(error.message);
-      return false;
+      return error.message;
     }
   );
 };

@@ -17,7 +17,7 @@ export default function NewLocationInput({ handelForm }) {
     e.preventDefault();
     handelForm(howMany, details);
   };
-  const cancel = (e) => handelForm(false, false);
+  const cancel = (e) => handelForm("","");
 
   return (
     <div className="homeText form">
