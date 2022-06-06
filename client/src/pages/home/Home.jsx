@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import Map from "../../components/LocationsMap/Map";
 import NewLocationInput from "../../components/newLocationInput/NewLocationInput";
 import HomeText from "../../components/homeText/HomeText";
-import {myApi} from "../../services/api";
-
+import { getGoogleApiKey } from "../../services/locations";
 
 function Home() {
-  const [APIKey, setApiKey] = useState(null);
   const [addingLocation, setAddingLocation] = useState(false);
   const [cancelMark, setCancelMark] = useState(false);
   const [successfullyPosted, setSuccessfullyPosted] = useState(null);
+  const [ApiKey, setApiKey] = useState("");
   const [newMark, setNewMark] = useState({
     lat: 0,
     lng: 0,
@@ -19,16 +18,11 @@ function Home() {
   });
 
   useEffect(() => {
-    const getGoogleApiKey = async () => {
-      try {
-        const key = await myApi.get("keys/googleApiKey");
-       
-        setApiKey(key.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getGoogleApiKey();
+    async function getApiKey() {
+      return await getGoogleApiKey();
+    }
+    const key = getApiKey();
+    setApiKey(key);
   }, []);
 
   const handelForm = (howMany, details) => {
@@ -84,15 +78,14 @@ function Home() {
   return (
     <div className="pagesContainer home BackGround ">
       <div className="homePageLeft">
-        {APIKey ? (
-          <Map
-            handelMapClick={handelMapClick}
-            cancel={cancelMark}
-            updateDbMarks={successfullyPosted}
-            APIKey={APIKey}
-          />
-        ) : null}
-      </div>
+        {ApiKey &&
+        <Map
+          handelMapClick={handelMapClick}
+          cancel={cancelMark}
+          updateDbMarks={successfullyPosted}
+          ApiKey={ApiKey}
+        />}
+         </div>
 
       <div className="homePageRight">
         {addingLocation ? (

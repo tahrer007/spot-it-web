@@ -1,11 +1,15 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import Search from "./search/Search";
 import Locate from "./currentLocation/CurrentLocation";
-import mapStyles from "../../services/mapsConfig/mapStyles";
 import isInsideHaifa from "../../scripts/insideHaifa";
 import HaifaCoords from "../../scripts/haifaCoords";
-import { getAllLocations } from "../../services/locations" ;
-import {libraries ,mapContainerStyle,options ,center} from "../../services/mapsConfig/mapConfig"
+import { getAllLocations, getGoogleApiKey } from "../../services/locations";
+import {
+  libraries,
+  mapContainerStyle,
+  options,
+  center,
+} from "../../services/mapsConfig/mapConfig";
 import "./map.css";
 import {
   GoogleMap,
@@ -15,46 +19,40 @@ import {
   Polygon,
 } from "@react-google-maps/api";
 import { formatRelative } from "date-fns";
-import {io} from "socket.io-client";
+import { io } from "socket.io-client";
 //import socketIOClient from "socket.io-client";
 //const ENDPOINT = "http://127.0.0.1:5000/api/socket";
 
-
-
-
-
-export default function Map({ handelMapClick, updateDbMarks, cancel, APIKey }) {
+export default function Map({ handelMapClick, updateDbMarks, cancel, ApiKey }) {
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [newMark, setNewMark] = useState({});
-  const [localMark, setLocalMark] = useState(false);
+  const [localMark, setLocalMark] = useState({ status: false, details: null });
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
+    libraries,
+  });
 
-  
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async () => {
-    const dbLocations = await getAllLocations();
-    console.log(dbLocations);
-    (dbLocations?.success==="ok")?setMarkers(dbLocations.locations) : setMarkers(null) ; 
+  useEffect(() => {
+    async function getLocations() {
+      const dbLocations = await getAllLocations();
+      dbLocations?.success
+        ? setMarkers(dbLocations.locations)
+        : setMarkers(null);
+    }
+    getLocations();
   }, []);
 
   useEffect(() => {
-    const socket = io(`https://spot-it-server.herokuapp.com/socket`)
+    const socket = io(`https://spot-it-server.herokuapp.com/socket`);
     socket.on("newLocation", (newLocation) => {
       console.log(newLocation);
-      setMarkers((prevState )=>[...prevState ,newLocation]);
+      setMarkers((prevState) => [...prevState, newLocation]);
     });
   }, []);
 
-  /*useEffect(() => {
+  useEffect(() => {
     if (!cancel) return;
-    setLocalMark(false);
-  }, [cancel]);*/
-
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: APIKey,
-    libraries,
-  });
+  }, [cancel]);
 
   const onMapClick = (e) => {
     const lat = e.latLng.lat();
@@ -64,12 +62,11 @@ export default function Map({ handelMapClick, updateDbMarks, cancel, APIKey }) {
       handelMapClick(false);
     } else {
       const newLocation = {
-        lat: lat,
-        lng: lng,
+        lat,
+        lng,
         time: new Date(),
       };
-      setNewMark(newLocation);
-      setLocalMark(true);
+      setLocalMark({ status: true, details: newLocation });
       handelMapClick(newLocation);
     }
   };
@@ -83,8 +80,14 @@ export default function Map({ handelMapClick, updateDbMarks, cancel, APIKey }) {
     mapRef.current.setZoom(16);
   }, []);
 
-  if (loadError) return "Error";
-  if (!isLoaded) return "Loading...";
+  if (loadError) {
+    console.log("error");
+    return "Error";
+  }
+  if (!isLoaded) {
+    console.log("loading");
+    return "Loading...";
+  }
 
   return (
     <div className="locationsMap">
@@ -109,12 +112,15 @@ export default function Map({ handelMapClick, updateDbMarks, cancel, APIKey }) {
           strokeWeight={2}
           fillColor="#0000FF"
           fillOpacity={0.35}
-  />
-        {localMark ? (
+        />
+        {localMark?.status && (
           <Marker
-            position={{ lat: newMark.lat, lng: newMark.lng }}
+            position={{
+              lat: localMark.details.lat,
+              lng: localMark.details.lng,
+            }}
             onClick={() => {
-              setSelected(newMark);
+              setSelected(localMark.details);
             }}
             icon={{
               url: `./local.png`,
@@ -123,25 +129,26 @@ export default function Map({ handelMapClick, updateDbMarks, cancel, APIKey }) {
               scaledSize: new window.google.maps.Size(30, 30),
             }}
           />
-          ):null}
+        )}
 
-        {markers.map((marker) => (
-          <Marker
-            key={marker._id}
-            position={{ lat: marker.lat, lng: marker.lng }}
-            onClick={() => {
-              setSelected(marker);
-            }}
-            icon={{
-              url: `./pumbaa.png`,
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(15, 15),
-              scaledSize: new window.google.maps.Size(30, 30),
-            }}
-          />
-        ))}
+        {markers &&
+          markers.map((marker) => (
+            <Marker
+              key={marker._id}
+              position={{ lat: marker.lat, lng: marker.lng }}
+              onClick={() => {
+                setSelected(marker);
+              }}
+              icon={{
+                url: `./pumbaa.png`,
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(15, 15),
+                scaledSize: new window.google.maps.Size(30, 30),
+              }}
+            />
+          ))}
 
-        {selected ? (
+        {selected && (
           <InfoWindow
             className="InfoWindow"
             position={{ lat: selected.lat, lng: selected.lng }}
@@ -164,7 +171,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel, APIKey }) {
               </p>
             </div>
           </InfoWindow>
-        ) : null}
+        )}
       </GoogleMap>
       <div className="errorMessage"></div>
     </div>

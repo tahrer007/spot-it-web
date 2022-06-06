@@ -24,4 +24,14 @@ const postLocation = async (newLocation) => {
   );
 };
 
-export { getAllLocations, postLocation };
+const getGoogleApiKey = async () => {
+  try {
+    const key = await myApi.get("keys/googleApiKey");
+    console.log(key.data)
+    return key.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getAllLocations, postLocation ,getGoogleApiKey };
