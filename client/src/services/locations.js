@@ -25,7 +25,6 @@ const postLocation = async (newLocation) => {
 const getGoogleApiKey = async () => {
   try {
     const key = await myApi.get("keys/googleApiKey");
-    console.log(key.data)
     return key.data;
   } catch (error) {
     console.log(error);

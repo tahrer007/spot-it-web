@@ -3,7 +3,7 @@ import Search from "./search/Search";
 import Locate from "./currentLocation/CurrentLocation";
 import isInsideHaifa from "../../scripts/insideHaifa";
 import HaifaCoords from "../../scripts/haifaCoords";
-import { getAllLocations, getGoogleApiKey } from "../../services/locations";
+import { getAllLocations } from "../../services/locations";
 import {
   libraries,
   mapContainerStyle,
@@ -31,14 +31,7 @@ export default function Map({ handelMapClick, removeLocaLMark, ApiKey }) {
     googleMapsApiKey: ApiKey,
     libraries,
   });
-  useEffect(() => {
-    const socket = io(`https://spot-it-server.herokuapp.com/api/socket`);
-    socket.on("newLocation", (newLocation) => {
-      console.log("ooooooooooooooooooooooooooooooooooooooooooooo")
-      console.log(newLocation);
-      setMarkers((prevState) => [...prevState, newLocation]);
-    });
-  }, []);
+ 
   
 
   useEffect(() => {
@@ -49,6 +42,15 @@ export default function Map({ handelMapClick, removeLocaLMark, ApiKey }) {
         : setMarkers(null);
     }
     getLocations();
+  }, []);
+
+  useEffect(() => {
+    const socket = io(`https://spot-it-server.herokuapp.com/socket`);
+    socket.on("newLocation", (newLocation) => {
+      console.log("ooooooooooooooooooooooooooooooooooooooooooooo")
+      console.log(newLocation);
+      setMarkers((prevState) => [...prevState, newLocation]);
+    });
   }, []);
 
  
@@ -85,11 +87,9 @@ export default function Map({ handelMapClick, removeLocaLMark, ApiKey }) {
   }, []);
 
   if (loadError) {
-    console.log("error");
     return "Error";
   }
   if (!isLoaded) {
-    console.log("loading");
     return "Loading...";
   }
 
