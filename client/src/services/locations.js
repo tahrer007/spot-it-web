@@ -5,10 +5,10 @@ const getAllLocations = async () => {
     const { data } = await myApi.get("locations/allLocations");
 
     //intialMarks(data);
-    return { status: "ok", locations: data };
+    return { success: true, locations: data };
   } catch (error) {
     console.log(error.message);
-    return { status: "faild", message: error.message };
+    return { success: false, message: error.message };
   }
 };
 

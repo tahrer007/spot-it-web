@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import Map from "../../components/LocationsMap/Map";
 import NewLocationInput from "../../components/newLocationInput/NewLocationInput";
 import HomeText from "../../components/homeText/HomeText";
-import "../../App.css";
-import "./home.css";
-import myApi from "../../api/api";
+import {myApi} from "../../services/api";
+
 
 function Home() {
   const [APIKey, setApiKey] = useState(null);
@@ -49,7 +48,7 @@ function Home() {
     setAddingLocation(false);
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     const addLocation = async () => {
       myApi.post("/locations/newLocation", newMark).then(
         (response) => {
@@ -67,7 +66,7 @@ function Home() {
 
     if (!newMark.number) return;
     addLocation(newMark);
-  }, [newMark]);
+  }, [newMark]);*/
 
   const handelMapClick = (newLocationData) => {
     if (!newLocationData) {
