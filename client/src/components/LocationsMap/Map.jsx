@@ -23,14 +23,23 @@ import { io } from "socket.io-client";
 //import socketIOClient from "socket.io-client";
 //const ENDPOINT = "http://127.0.0.1:5000/api/socket";
 
-export default function Map({ handelMapClick, updateDbMarks, cancel, ApiKey }) {
+export default function Map({ handelMapClick, removeLocaLMark, ApiKey }) {
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [localMark, setLocalMark] = useState({ status: false, details: null });
+  const [localMark, setLocalMark] = useState(null);
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyApfEJizBV1MmMpqHfTZiGKrQkvCF1UFAo",
+    googleMapsApiKey: ApiKey,
     libraries,
   });
+  useEffect(() => {
+    const socket = io(`https://spot-it-server.herokuapp.com/api/socket`);
+    socket.on("newLocation", (newLocation) => {
+      console.log("ooooooooooooooooooooooooooooooooooooooooooooo")
+      console.log(newLocation);
+      setMarkers((prevState) => [...prevState, newLocation]);
+    });
+  }, []);
+  
 
   useEffect(() => {
     async function getLocations() {
@@ -42,17 +51,12 @@ export default function Map({ handelMapClick, updateDbMarks, cancel, ApiKey }) {
     getLocations();
   }, []);
 
-  useEffect(() => {
-    const socket = io(`https://spot-it-server.herokuapp.com/socket`);
-    socket.on("newLocation", (newLocation) => {
-      console.log(newLocation);
-      setMarkers((prevState) => [...prevState, newLocation]);
-    });
-  }, []);
+ 
 
-  useEffect(() => {
-    if (!cancel) return;
-  }, [cancel]);
+  useEffect(()=>{
+    if(removeLocaLMark) setLocalMark(null);
+  },[removeLocaLMark]);
+
 
   const onMapClick = (e) => {
     const lat = e.latLng.lat();
@@ -64,7 +68,7 @@ export default function Map({ handelMapClick, updateDbMarks, cancel, ApiKey }) {
         lng,
         time: new Date(),
       };
-      setLocalMark({ status: true, details: newLocation });
+      setLocalMark(newLocation);
       handelMapClick(newLocation);
     } else {
       //error message - outside the polygen!!
@@ -113,14 +117,14 @@ export default function Map({ handelMapClick, updateDbMarks, cancel, ApiKey }) {
           fillColor="#0000FF"
           fillOpacity={0.35}
         />
-        {localMark?.status && (
+        {(localMark && !removeLocaLMark) && (
           <Marker
             position={{
-              lat: localMark.details.lat,
-              lng: localMark.details.lng,
+              lat: localMark.lat,
+              lng: localMark.lng,
             }}
             onClick={() => {
-              setSelected(localMark.details);
+              setSelected(localMark);
             }}
             icon={{
               url: `./local.png`,

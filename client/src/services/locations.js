@@ -3,8 +3,6 @@ import { myApi } from "./api";
 const getAllLocations = async () => {
   try {
     const { data } = await myApi.get("locations/allLocations");
-
-    //intialMarks(data);
     return { success: true, locations: data };
   } catch (error) {
     console.log(error.message);
@@ -13,9 +11,9 @@ const getAllLocations = async () => {
 };
 
 const postLocation = async (newLocation) => {
-  myApi.post("/locations/newLocation", newLocation).then(
-    (response) => {
-      return response;
+  myApi.post("locations/newLocation", newLocation).then(
+    (response) => { 
+      return  ;
     },
     (error) => {
       console.log(error.message);

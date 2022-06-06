@@ -6,8 +6,7 @@ import { getGoogleApiKey, postLocation } from "../../services/locations";
 
 function Home() {
   const [addingLocation, setAddingLocation] = useState(false);
-  const [cancelMark, setCancelMark] = useState(false);
-  const [successfullyPosted, setSuccessfullyPosted] = useState(null);
+  const [removeLocaLMark, setRemoveLocalMark] = useState(false);
   const [ApiKey, setApiKey] = useState("");
   const [newMark, setNewMark] = useState({
     lat: 0,
@@ -19,16 +18,16 @@ function Home() {
 
   useEffect(() => {
     async function getApiKey() {
-      return await getGoogleApiKey();
+      const key =await getGoogleApiKey();
+      setApiKey(key);
     }
-    const key = getApiKey();
-    setApiKey(key);
+    getApiKey();
   }, []);
 
   useEffect(() => {
     const updateDb = async () => {
-      const response = await postLocation(newMark);
-      console.log(response);
+      await postLocation(newMark);
+      setNewMark({});
     };
 
     if (!newMark.number) return;
@@ -37,9 +36,7 @@ function Home() {
 
   const handelForm = (howMany, details) => {
     if (!howMany) {
-      //setCancelMark(true);
     } else {
-      console.log(howMany, details);
       setNewMark((prevState) => ({
         ...prevState,
         number: howMany,
@@ -47,6 +44,11 @@ function Home() {
       }));
     }
     setAddingLocation(false);
+    setRemoveLocalMark(true);
+
+    setTimeout(() => {
+      setRemoveLocalMark(false);
+    }, 1000);
   };
 
   const handelMapClick = (newLocationData) => {
@@ -65,8 +67,7 @@ function Home() {
         {ApiKey && (
           <Map
             handelMapClick={handelMapClick}
-            cancel={cancelMark}
-            updateDbMarks={successfullyPosted}
+            removeLocaLMark={removeLocaLMark}
             ApiKey={ApiKey}
           />
         )}
