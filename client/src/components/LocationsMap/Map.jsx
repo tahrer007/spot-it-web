@@ -4,6 +4,7 @@ import Locate from "./currentLocation/CurrentLocation";
 import isInsideHaifa from "../../scripts/insideHaifa";
 import HaifaCoords from "../../scripts/haifaCoords";
 import { getAllLocations } from "../../services/locations";
+import { myUrl } from "../../services/api";
 import {
   libraries,
   mapContainerStyle,
@@ -45,7 +46,7 @@ export default function Map({ handelMapClick, removeLocaLMark, ApiKey }) {
   }, []);
 
   useEffect(() => {
-    const socket = io(`https://spot-it-server.herokuapp.com/socket`);
+    const socket = io(`${myUrl}socket`);
     socket.on("newLocation", (newLocation) => {
       console.log("ooooooooooooooooooooooooooooooooooooooooooooo")
       console.log(newLocation);
