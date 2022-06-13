@@ -9,7 +9,8 @@
     "startLocal": "concurrently \"npm run dev\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server/server.js",
-    "heroku-postbuild": "npm install --prefix client && npm run build-react"
+    "heroku-postbuild": "npm install --prefix client && npm run build-react",
+    "build-netlify": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
