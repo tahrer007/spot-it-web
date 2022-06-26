@@ -19,7 +19,7 @@ the app shows all the locations of spotted boars in the last 48 hours. as well a
 Live Link 
 * 👉[Spot-it](https://spot-it-web-2022.netlify.app/)
 * 👉[Backend repo](https://github.com/tahrer007/spot-it-server)
-* 👉[mobile repo](https://github.com/tahrer007/spot-it-mobile) - stil working on it 🤓
+* 👉[mobile repo](https://github.com/tahrer007/spot-it-mobile) - still working on it 🤓
 
 
 ## From the App
