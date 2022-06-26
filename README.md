@@ -16,7 +16,7 @@ The wild pigs of Haifa have invaded almost all the city. as a stranger, I didn't
 the app shows all the locations of spotted boars in the last 48 hours. as well as the most affected neighborhoods.
 
 ## Live Link 
-[spot it](https://spot-it-web-2022.netlify.app/)
+[Spot-it](https://spot-it-web-2022.netlify.app/)
 
 ## Server-Side
 [Backend repository](https://github.com/tahrer007/spot-it-server)
@@ -33,10 +33,12 @@ the app shows all the locations of spotted boars in the last 48 hours. as well a
 * React 
 * CSS3
 * JavaScript
+ #### Libraries
 * @reach/combobox
 * react-google-places-autocomplete
 * react-google-maps/api
 * axios 
+* socket.io-client
 ### server side 
 * xpress 
 * cors
