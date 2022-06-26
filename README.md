@@ -37,6 +37,7 @@ the app shows all the locations of spotted boars in the last 48 hours. as well a
 ### server side 
 * xpress 
 * cors
+* socket
 ### dataBase 
 * MongoDB Atlas
 
